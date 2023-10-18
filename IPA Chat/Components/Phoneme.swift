@@ -10,7 +10,7 @@ enum PhonemeType: Codable {
     case vowel, consonant, diphthong, stress, pause, semivowel, nasal
 }
 
-struct Phoneme: Identifiable, Codable {
+struct Phoneme: Identifiable, Codable, Equatable {
     let id: UUID  // Make this immutable
     let symbol: String
     let ipaNotation: String

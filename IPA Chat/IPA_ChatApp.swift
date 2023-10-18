@@ -11,7 +11,9 @@ import SwiftUI
 struct IPA_ChatApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let audioManager = AudioManager()
+            let viewModel = ContentViewModelImplementation(audioManager: audioManager)
+            ContentView(viewModel: viewModel)
         }
     }
 }

@@ -1,27 +1,25 @@
 import SwiftUI
 import AVFAudio
 
-struct SettingsView: SwiftUI.View {
-    @ObservedObject var audioManager: AudioManager
+struct SettingsView<ViewModel>: View where ViewModel: SettingsViewModel {
+    @ObservedObject var viewModel: ViewModel
     @Binding var selectedLanguage: String
-    var languages = ["English-GB", "French"]
-    var groupedVoices: [String: [VoiceWrapper]] = voicesByLanguage()
     @Binding var phonemes: [Phoneme]
     
     var body: some View {
         Form {
-            Toggle("Speak utterance as selected", isOn: $audioManager.shouldSpeakFullUtterance)
+            Toggle("Speak utterance as selected", isOn: $viewModel.audioManager.shouldSpeakFullUtterance)
             
             Picker("Language", selection: $selectedLanguage) {
-                ForEach(languages, id: \.self) {
+                ForEach(viewModel.languages, id: \.self) {
                     Text($0)
                 }
             }
             
-            Picker("Select Voice", selection: $audioManager.selectedVoice) {
-                ForEach(groupedVoices.keys.sorted(), id: \.self) { language in
+            Picker("Select Voice", selection: $viewModel.audioManager.selectedVoice) {
+                ForEach(viewModel.groupedVoices.keys.sorted(), id: \.self) { language in
                     Section(header: Text(language)) {
-                        ForEach(groupedVoices[language]!, id: \.self) { wrapper in
+                        ForEach(viewModel.groupedVoices[language]!, id: \.self) { wrapper in
                             Text(wrapper.voice.name).tag(wrapper.voice as AVSpeechSynthesisVoice?)
                         }
                     }
@@ -45,5 +43,18 @@ struct SettingsView: SwiftUI.View {
         // Move elements around
         phonemes.move(fromOffsets: source, toOffset: destination)
     }
-    
+}
+
+// MARK: - Previews
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        let vm = SettingsViewModelImplementation(audioManager: AudioManager())
+        @State var selectedLanguage = "test language"
+        @State var phonemes = [Phoneme(symbol: "test", ipaNotation: "test", type: .nasal)]
+        
+        SettingsView(
+            viewModel: vm,
+            selectedLanguage: $selectedLanguage,
+            phonemes: $phonemes)
+    }
 }
