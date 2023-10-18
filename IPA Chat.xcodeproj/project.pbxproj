@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FC004882ADFB99A00219811 /* Pages in Resources */ = {isa = PBXBuildFile; fileRef = 3FC004852ADFB99A00219811 /* Pages */; };
+		3FC004892ADFB99A00219811 /* Components in Resources */ = {isa = PBXBuildFile; fileRef = 3FC004862ADFB99A00219811 /* Components */; };
+		3FC0048A2ADFB99A00219811 /* Observables in Resources */ = {isa = PBXBuildFile; fileRef = 3FC004872ADFB99A00219811 /* Observables */; };
+		3FC0048C2ADFBD0C00219811 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0048B2ADFBD0C00219811 /* Helpers.swift */; };
+		3FC0048F2ADFC18000219811 /* VoiceEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0048E2ADFC18000219811 /* VoiceEngine.swift */; };
 		3FEBE2812ADF450E00B55CFC /* IPA_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBE2802ADF450E00B55CFC /* IPA_ChatApp.swift */; };
 		3FEBE2832ADF450E00B55CFC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBE2822ADF450E00B55CFC /* ContentView.swift */; };
 		3FEBE2852ADF451100B55CFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FEBE2842ADF451100B55CFC /* Assets.xcassets */; };
 		3FEBE2882ADF451100B55CFC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FEBE2872ADF451100B55CFC /* Preview Assets.xcassets */; };
-		3FEBE2922ADF451100B55CFC /* IPA_ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBE2912ADF451100B55CFC /* IPA_ChatTests.swift */; };
-		3FEBE29C2ADF451100B55CFC /* IPA_ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBE29B2ADF451100B55CFC /* IPA_ChatUITests.swift */; };
-		3FEBE29E2ADF451100B55CFC /* IPA_ChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBE29D2ADF451100B55CFC /* IPA_ChatUITestsLaunchTests.swift */; };
 		3FEBE2AB2ADF455700B55CFC /* ipa-dict.db in Resources */ = {isa = PBXBuildFile; fileRef = 3FEBE2AA2ADF455600B55CFC /* ipa-dict.db */; };
 		3FEBE2AE2ADF459300B55CFC /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 3FEBE2AD2ADF459300B55CFC /* SQLite */; };
 /* End PBXBuildFile section */
@@ -36,16 +38,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FC004852ADFB99A00219811 /* Pages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pages; sourceTree = "<group>"; };
+		3FC004862ADFB99A00219811 /* Components */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Components; sourceTree = "<group>"; };
+		3FC004872ADFB99A00219811 /* Observables */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Observables; sourceTree = "<group>"; };
+		3FC0048B2ADFBD0C00219811 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		3FC0048D2ADFBF7000219811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FC0048E2ADFC18000219811 /* VoiceEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceEngine.swift; sourceTree = "<group>"; };
 		3FEBE27D2ADF450E00B55CFC /* IPA Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FEBE2802ADF450E00B55CFC /* IPA_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_ChatApp.swift; sourceTree = "<group>"; };
 		3FEBE2822ADF450E00B55CFC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3FEBE2842ADF451100B55CFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FEBE2872ADF451100B55CFC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3FEBE28D2ADF451100B55CFC /* IPA ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IPA ChatTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FEBE2912ADF451100B55CFC /* IPA_ChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_ChatTests.swift; sourceTree = "<group>"; };
 		3FEBE2972ADF451100B55CFC /* IPA ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IPA ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FEBE29B2ADF451100B55CFC /* IPA_ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_ChatUITests.swift; sourceTree = "<group>"; };
-		3FEBE29D2ADF451100B55CFC /* IPA_ChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_ChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FEBE2AA2ADF455600B55CFC /* ipa-dict.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ipa-dict.db"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,8 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				3FEBE27F2ADF450E00B55CFC /* IPA Chat */,
-				3FEBE2902ADF451100B55CFC /* IPA ChatTests */,
-				3FEBE29A2ADF451100B55CFC /* IPA ChatUITests */,
 				3FEBE27E2ADF450E00B55CFC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,9 +101,15 @@
 		3FEBE27F2ADF450E00B55CFC /* IPA Chat */ = {
 			isa = PBXGroup;
 			children = (
+				3FC0048D2ADFBF7000219811 /* Info.plist */,
+				3FC004862ADFB99A00219811 /* Components */,
+				3FC004872ADFB99A00219811 /* Observables */,
+				3FC004852ADFB99A00219811 /* Pages */,
 				3FEBE2AA2ADF455600B55CFC /* ipa-dict.db */,
 				3FEBE2802ADF450E00B55CFC /* IPA_ChatApp.swift */,
 				3FEBE2822ADF450E00B55CFC /* ContentView.swift */,
+				3FC0048B2ADFBD0C00219811 /* Helpers.swift */,
+				3FC0048E2ADFC18000219811 /* VoiceEngine.swift */,
 				3FEBE2842ADF451100B55CFC /* Assets.xcassets */,
 				3FEBE2862ADF451100B55CFC /* Preview Content */,
 			);
@@ -113,23 +122,6 @@
 				3FEBE2872ADF451100B55CFC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		3FEBE2902ADF451100B55CFC /* IPA ChatTests */ = {
-			isa = PBXGroup;
-			children = (
-				3FEBE2912ADF451100B55CFC /* IPA_ChatTests.swift */,
-			);
-			path = "IPA ChatTests";
-			sourceTree = "<group>";
-		};
-		3FEBE29A2ADF451100B55CFC /* IPA ChatUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3FEBE29B2ADF451100B55CFC /* IPA_ChatUITests.swift */,
-				3FEBE29D2ADF451100B55CFC /* IPA_ChatUITestsLaunchTests.swift */,
-			);
-			path = "IPA ChatUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,8 +235,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FEBE2882ADF451100B55CFC /* Preview Assets.xcassets in Resources */,
+				3FC004882ADFB99A00219811 /* Pages in Resources */,
 				3FEBE2852ADF451100B55CFC /* Assets.xcassets in Resources */,
+				3FC004892ADFB99A00219811 /* Components in Resources */,
 				3FEBE2AB2ADF455700B55CFC /* ipa-dict.db in Resources */,
+				3FC0048A2ADFB99A00219811 /* Observables in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +264,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC0048F2ADFC18000219811 /* VoiceEngine.swift in Sources */,
 				3FEBE2832ADF450E00B55CFC /* ContentView.swift in Sources */,
+				3FC0048C2ADFBD0C00219811 /* Helpers.swift in Sources */,
 				3FEBE2812ADF450E00B55CFC /* IPA_ChatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,7 +275,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FEBE2922ADF451100B55CFC /* IPA_ChatTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,8 +282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FEBE29E2ADF451100B55CFC /* IPA_ChatUITestsLaunchTests.swift in Sources */,
-				3FEBE29C2ADF451100B55CFC /* IPA_ChatUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

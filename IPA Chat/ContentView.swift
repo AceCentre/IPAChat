@@ -193,12 +193,12 @@ class AudioManager: ObservableObject {
 
 struct SettingsView: SwiftUI.View {
     @ObservedObject var audioManager: AudioManager
-    @Binding var selectedLanguage: String
+    @SwiftUI.Binding var selectedLanguage: String
     var languages = ["English-GB", "French"]
     var groupedVoices: [String: [VoiceWrapper]] = voicesByLanguage()
-    @Binding var phonemes: [Phoneme]
+    @SwiftUI.Binding var phonemes: [Phoneme]
     
-    var body: some View {
+    var body: some SwiftUI.View {
         Form {
             Toggle("Speak utterance as selected", isOn: $audioManager.shouldSpeakFullUtterance)
             
@@ -238,7 +238,7 @@ struct SettingsView: SwiftUI.View {
     
 }
 
-struct ContentView: View {
+struct ContentView: SwiftUI.View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @ObservedObject var audioManager = AudioManager()
     @State var isEditMode: Bool = false
@@ -360,7 +360,7 @@ struct ContentView: View {
     }
     
     
-    var body: some View {
+    var body: some SwiftUI.View {
         GeometryReader { geometry in
             NavigationView {
                 VStack {
@@ -476,4 +476,3 @@ struct ContentView: View {
         }
     }
 }
-
