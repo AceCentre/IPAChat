@@ -86,5 +86,9 @@ struct Phonemes {
         Phoneme(symbol: "ɑ̃", ipaNotation: "ɑ̃", type: .nasal, x: 0, y: 0),
         Phoneme(symbol: "ɛ̃", ipaNotation: "ɛ̃", type: .nasal, x: 0, y: 0),
         Phoneme(symbol: "œ̃", ipaNotation: "œ̃", type: .nasal, x: 0, y: 0),
-        Phoneme(symbol: "ɔ̃", ipaNotation: "ɔ̃", type: .nasal, x: 0, y: 0)]
+        Phoneme(symbol: "ɔ̃", ipaNotation: "ɔ̃", type: .nasal, x: 0, y: 0),
+        Phoneme(symbol: ",", ipaNotation: ",", type: .stress, x: 0, y: 0),
+        Phoneme(symbol: "ˈ", ipaNotation: "ˈ", type: .stress, x: 0, y: 0),
+        Phoneme(symbol: "‖", ipaNotation: "‖", type: .pause, x: 0, y: 0),
+        Phoneme(symbol: "‖‖", ipaNotation: "‖‖", type: .pause,  x: 0, y: 0)]
 }
