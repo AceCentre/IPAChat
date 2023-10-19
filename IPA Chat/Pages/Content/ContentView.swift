@@ -57,17 +57,6 @@ struct ContentView<ViewModel>: View where ViewModel: ContentViewModel {
             .navigationViewStyle(StackNavigationViewStyle())
         }
     }
-    
-    private func prepareSettingsView() -> some View {
-        let vm = SettingsViewModelImplementation(audioManager: viewModel.audioManager)
-        
-        let view = SettingsView(
-            viewModel: vm,
-            selectedLanguage: $viewModel.selectedLanguage,
-            phonemes: $viewModel.phonemes)
-        
-        return view
-    }
 }
 
 // MARK: - Previews

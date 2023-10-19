@@ -11,7 +11,13 @@
 		3709A9E52AE01A6500934DC5 /* MockAudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9E42AE01A6500934DC5 /* MockAudioManager.swift */; };
 		3709A9EA2AE01AAF00934DC5 /* ContentViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9E92AE01AAF00934DC5 /* ContentViewModelTests.swift */; };
 		3709A9EF2AE01C8000934DC5 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9EE2AE01C8000934DC5 /* SettingsViewModelTests.swift */; };
-		378521972ADFC5C4007BB7FA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378521962ADFC5C4007BB7FA /* SettingsView.swift */; };
+		3709A9F22AE1115900934DC5 /* PhonemesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9F12AE1115900934DC5 /* PhonemesView.swift */; };
+		3709A9F42AE1344000934DC5 /* SelectVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9F32AE1344000934DC5 /* SelectVoiceView.swift */; };
+		3709A9F62AE1347400934DC5 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9F52AE1347400934DC5 /* LanguageView.swift */; };
+		3709A9F82AE13BFC00934DC5 /* SettingsSectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9F72AE13BFC00934DC5 /* SettingsSectionButton.swift */; };
+		3709A9FA2AE13CA400934DC5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9F92AE13CA400934DC5 /* SettingsView.swift */; };
+		3709A9FC2AE146B200934DC5 /* SettingsSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9FB2AE146B200934DC5 /* SettingsSectionType.swift */; };
+		3709AA012AE161BC00934DC5 /* Phoneme1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709AA002AE161BC00934DC5 /* Phoneme1.swift */; };
 		378521992ADFC5DF007BB7FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378521982ADFC5DF007BB7FA /* ContentView.swift */; };
 		3785219B2ADFC62E007BB7FA /* VoiceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785219A2ADFC62E007BB7FA /* VoiceWrapper.swift */; };
 		3785219D2ADFC6DC007BB7FA /* Phoneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785219C2ADFC6DC007BB7FA /* Phoneme.swift */; };
@@ -48,7 +54,13 @@
 		3709A9E42AE01A6500934DC5 /* MockAudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAudioManager.swift; sourceTree = "<group>"; };
 		3709A9E92AE01AAF00934DC5 /* ContentViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModelTests.swift; sourceTree = "<group>"; };
 		3709A9EE2AE01C8000934DC5 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
-		378521962ADFC5C4007BB7FA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3709A9F12AE1115900934DC5 /* PhonemesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonemesView.swift; sourceTree = "<group>"; };
+		3709A9F32AE1344000934DC5 /* SelectVoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVoiceView.swift; sourceTree = "<group>"; };
+		3709A9F52AE1347400934DC5 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		3709A9F72AE13BFC00934DC5 /* SettingsSectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionButton.swift; sourceTree = "<group>"; };
+		3709A9F92AE13CA400934DC5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3709A9FB2AE146B200934DC5 /* SettingsSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionType.swift; sourceTree = "<group>"; };
+		3709AA002AE161BC00934DC5 /* Phoneme1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phoneme1.swift; sourceTree = "<group>"; };
 		378521982ADFC5DF007BB7FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3785219A2ADFC62E007BB7FA /* VoiceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceWrapper.swift; sourceTree = "<group>"; };
 		3785219C2ADFC6DC007BB7FA /* Phoneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phoneme.swift; sourceTree = "<group>"; };
@@ -130,11 +142,25 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		3709A9F02AE110E300934DC5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3709A9F92AE13CA400934DC5 /* SettingsView.swift */,
+				3709A9FB2AE146B200934DC5 /* SettingsSectionType.swift */,
+				3709A9F72AE13BFC00934DC5 /* SettingsSectionButton.swift */,
+				3709A9F12AE1115900934DC5 /* PhonemesView.swift */,
+				3709A9F32AE1344000934DC5 /* SelectVoiceView.swift */,
+				3709A9F52AE1347400934DC5 /* LanguageView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		378521A12ADFEA21007BB7FA /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				3785219A2ADFC62E007BB7FA /* VoiceWrapper.swift */,
 				3785219C2ADFC6DC007BB7FA /* Phoneme.swift */,
+				3709AA002AE161BC00934DC5 /* Phoneme1.swift */,
 				3785219E2ADFC718007BB7FA /* AudioManager.swift */,
 				3FEBE2822ADF450E00B55CFC /* GlobalMethods.swift */,
 				378521A42ADFEACC007BB7FA /* Phonemes.swift */,
@@ -155,7 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				378521AC2AE0021B007BB7FA /* Content */,
-				378521962ADFC5C4007BB7FA /* SettingsView.swift */,
+				3709A9F02AE110E300934DC5 /* Settings */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -332,17 +358,23 @@
 			files = (
 				378521A52ADFEACC007BB7FA /* Phonemes.swift in Sources */,
 				3785219D2ADFC6DC007BB7FA /* Phoneme.swift in Sources */,
+				3709A9FC2AE146B200934DC5 /* SettingsSectionType.swift in Sources */,
+				3709AA012AE161BC00934DC5 /* Phoneme1.swift in Sources */,
+				3709A9F42AE1344000934DC5 /* SelectVoiceView.swift in Sources */,
+				3709A9F82AE13BFC00934DC5 /* SettingsSectionButton.swift in Sources */,
 				3785219F2ADFC718007BB7FA /* AudioManager.swift in Sources */,
 				378521992ADFC5DF007BB7FA /* ContentView.swift in Sources */,
-				378521972ADFC5C4007BB7FA /* SettingsView.swift in Sources */,
 				378521C02AE01022007BB7FA /* ContentSearchView.swift in Sources */,
 				378521B02AE00248007BB7FA /* ContentPhonemeButtonView.swift in Sources */,
 				378521AB2ADFFA5C007BB7FA /* SettingsViewModel.swift in Sources */,
 				378521B42AE0026B007BB7FA /* ContentButtonBarView.swift in Sources */,
 				378521A72ADFEB99007BB7FA /* ContentViewModel.swift in Sources */,
 				3FEBE2832ADF450E00B55CFC /* GlobalMethods.swift in Sources */,
+				3709A9FA2AE13CA400934DC5 /* SettingsView.swift in Sources */,
+				3709A9F62AE1347400934DC5 /* LanguageView.swift in Sources */,
 				3785219B2ADFC62E007BB7FA /* VoiceWrapper.swift in Sources */,
 				3FEBE2812ADF450E00B55CFC /* IPA_ChatApp.swift in Sources */,
+				3709A9F22AE1115900934DC5 /* PhonemesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
