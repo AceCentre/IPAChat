@@ -1,5 +1,6 @@
 import SwiftUI
 import AVFAudio
+import PhonemesDB
 
 struct SettingsView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
@@ -10,9 +11,9 @@ struct SettingsView<ViewModel>: View where ViewModel: SettingsViewModel {
     @State private var isPresented = false
     
     let sectionButtons: [SettingsSectionButton] = [
-        SettingsSectionButton(title: "Language", sectionType: .language),
-        SettingsSectionButton(title: "Select Voice", sectionType: .selectVoice),
-        SettingsSectionButton(title: "Reorder Phonemes", sectionType: .reorderPhonemes)
+        SettingsSectionButton(title: "settings.section.button.language".localized, sectionType: .language),
+        SettingsSectionButton(title: "settings.section.button.voices".localized, sectionType: .selectVoice),
+        SettingsSectionButton(title: "settings.section.button.reorder".localized, sectionType: .reorderPhonemes)
     ]
     
     var body: some View {
@@ -33,7 +34,7 @@ struct SettingsView<ViewModel>: View where ViewModel: SettingsViewModel {
                 }
             }
         }
-        .navigationTitle("Settings")
+        .navigationTitle("settings.navigation.title".localized)
     }
 }
 
@@ -44,7 +45,7 @@ extension SettingsView {
         case .language:
             return AnyView(LanguageView(viewModel: viewModel, selectedLanguage: $selectedLanguage))
         case .selectVoice:
-            return AnyView(SelectVoiceView(viewModel: viewModel, selectedLanguage: $selectedLanguage))
+            return AnyView(VoicesView(viewModel: viewModel))
         case .reorderPhonemes:
             return AnyView(PhonemesView(viewModel: viewModel, phonemes: $phonemes))
         }
@@ -54,7 +55,8 @@ extension SettingsView {
 // MARK: - Previews
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = SettingsViewModelImplementation(audioManager: AudioManager())
+        let cache = SpeechCacheImplementation()
+        let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
         @State var selectedLanguage = "test language"
         @State var phonemes = [Phoneme(symbol: "test", ipaNotation: "test", type: .nasal)]
         

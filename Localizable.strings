@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  IPA Chat
+*/
+
+// MARK: - Settings Page
+"settings.sample.text.to.speak" = "This is a sample of the voice.";
+"settings.section.button.language" = "Language";
+"settings.section.button.voices" = "Voices";
+"settings.section.button.reorder" = "Reorder Phonemes";
+"settings.navigation.title" = "Settings";
+"settings.phonemes.navigation.title" = "Reorder Phonemes";
+"settings.voices.navigation.title" = "Voices";
+"settings.voices.header.title" = "All voices:";
+"settings.selected.voice.header.title" = "Selected Voice:";
+"settings.selected.voice.not.selected" = "Not selected";
+"settings.selected.voice.play.sample" = "Play Sample";
+"settings.selected.voice.play.pitch" = "Pitch";
+"settings.selected.voice.play.rate" = "Rate";
+"settings.language.voice.header.title" = "Language";
+"settings.language.navigation.title" = "Language";
+"settings.language.speak.utterance" = "Speak utterance as selected";
+"settings.language.select" = "Select Language";

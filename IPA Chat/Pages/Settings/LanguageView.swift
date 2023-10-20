@@ -8,11 +8,11 @@ struct LanguageView<ViewModel>: View where ViewModel: SettingsViewModel {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Language")) {
-                    Toggle("Speak utterance as selected", isOn: $viewModel.audioManager.shouldSpeakFullUtterance)
+                Section(header: Text("settings.language.voice.header.title".localized)) {
+                    Toggle("settings.language.speak.utterance".localized, isOn: $viewModel.audioManager.shouldSpeakFullUtterance)
                 }
 
-                Section(header: Text("Select Language")) {
+                Section(header: Text("settings.language.select".localized)) {
                     ForEach(viewModel.languages, id: \.self) { language in
                         Button(action: {
                             selectedLanguage = language
@@ -30,7 +30,7 @@ struct LanguageView<ViewModel>: View where ViewModel: SettingsViewModel {
                 }
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Language")
+            .navigationTitle("settings.language.navigation.title".localized)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -47,10 +47,9 @@ struct LanguageView<ViewModel>: View where ViewModel: SettingsViewModel {
 // MARK: - Previews
 struct LanguageView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = SettingsViewModelImplementation(audioManager: AudioManager())
-        
+        let cache = SpeechCacheImplementation()
+        let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
         @State var selectedLanguage = "EN"
-
-        return LanguageView(viewModel: viewModel, selectedLanguage: $selectedLanguage)
+        return LanguageView(viewModel: vm, selectedLanguage: $selectedLanguage)
     }
 }

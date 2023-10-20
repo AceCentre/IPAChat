@@ -12,7 +12,8 @@ struct IPA_ChatApp: App {
     var body: some Scene {
         WindowGroup {
             let audioManager = AudioManager()
-            let viewModel = ContentViewModelImplementation(audioManager: audioManager)
+            let cache = PhonemesCacheImplementation()
+            let viewModel = ContentViewModelImplementation(cache: cache, audioManager: audioManager)
             ContentView(viewModel: viewModel)
         }
     }

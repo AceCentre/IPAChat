@@ -1,37 +1,31 @@
 import SwiftUI
 import AVFAudio
 
-struct SelectVoiceView<ViewModel>: View where ViewModel: SettingsViewModel {
+struct VoicesView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
-    @Binding var selectedLanguage: String
     @Environment(\.presentationMode) var presentationMode
-    @State private var selectedVoice: AVSpeechSynthesisVoice?
     
     var body: some View {
         NavigationView {
             List {
-                let selectedVoiceTitle = viewModel.audioManager.selectedVoice?.name ?? "Not selected"
-                HStack {
-                    Text("Selected Voice:")
-                        .font(.title3)
-                        .foregroundStyle(.blue)
-                    Spacer()
-                    Text(selectedVoiceTitle)
-                        .font(.title3)
+                VStack {
+                    SelectedVoiceView(viewModel: viewModel)
                 }
                 
+                Section(header: Text("settings.voices.header.title".localized).font(.title2)) { }
+ 
                 ForEach(viewModel.groupedVoices.keys.sorted(), id: \.self) { language in
                     Section(header: Text(language)) {
                         if let voices = viewModel.groupedVoices[language] {
                             ForEach(voices, id: \.self) { wrapper in
                                 Button(action: {
                                     viewModel.audioManager.selectedVoice = wrapper.voice
-                                    selectedVoice = wrapper.voice
+                                    viewModel.selectedVoice = wrapper.voice
                                 }) {
                                     HStack {
                                         Text(wrapper.voice.name)
                                         Spacer()
-                                        if selectedVoice == wrapper.voice {
+                                        if viewModel.selectedVoice == wrapper.voice {
                                             Image(systemName: "checkmark")
                                                 .foregroundColor(.blue)
                                         }
@@ -42,11 +36,8 @@ struct SelectVoiceView<ViewModel>: View where ViewModel: SettingsViewModel {
                     }
                 }
             }
-            .onAppear(perform: {
-                selectedVoice = viewModel.audioManager.selectedVoice
-            })
             .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Select Voice")
+            .navigationTitle("settings.voices.navigation.title".localized)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -61,12 +52,10 @@ struct SelectVoiceView<ViewModel>: View where ViewModel: SettingsViewModel {
 }
 
 // MARK: - Previews
-struct SelectVoiceView_Previews: PreviewProvider {
+struct VoicesView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = SettingsViewModelImplementation(audioManager: AudioManager())
-        
-        @State var selectedLanguage = "EN"
-
-        return SelectVoiceView(viewModel: viewModel, selectedLanguage: $selectedLanguage)
+        let cache = SpeechCacheImplementation()
+        let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
+        return VoicesView(viewModel: vm)
     }
 }

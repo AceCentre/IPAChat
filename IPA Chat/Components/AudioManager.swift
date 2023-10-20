@@ -1,6 +1,7 @@
 import SwiftUI
 import AVFoundation
 import SQLite
+import PhonemesDB
 
 class AudioManager: ObservableObject {
     private var synthesizer = AVSpeechSynthesizer()

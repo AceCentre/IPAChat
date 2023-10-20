@@ -1,4 +1,5 @@
 import SwiftUI
+import PhonemesDB
 
 struct ContentPhonemeButtonView<ViewModel>: View where ViewModel: ContentViewModel {
     @ObservedObject var viewModel: ViewModel
@@ -21,7 +22,8 @@ struct ContentPhonemeButtonView<ViewModel>: View where ViewModel: ContentViewMod
 // MARK: - Previews
 struct ContentPhonemeButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = ContentViewModelImplementation(audioManager: AudioManager())
+        let cache = PhonemesCacheImplementation()
+        let vm = ContentViewModelImplementation(cache: cache, audioManager: AudioManager())
         let phoneme = Phoneme(symbol: "test", ipaNotation: "test", type: .nasal)
         ContentPhonemeButtonView(viewModel: vm, phoneme: phoneme)
     }

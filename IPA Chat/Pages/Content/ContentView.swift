@@ -1,10 +1,11 @@
 import SwiftUI
+import PhonemesDB
 
 struct ContentView<ViewModel>: View where ViewModel: ContentViewModel {
     @ObservedObject var viewModel: ViewModel
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State var isEditMode: Bool = false
-    @State var currentPhonemes: [Phoneme] = Phonemes.english
+    @State var currentPhonemes: [Phoneme] = PhonemesDB.english_GB.get
     @State private var ipaDictionary: [String: String] = [:]
     @State private var searchResult: String?
     @State private var showingSearchSheet = false
@@ -62,7 +63,8 @@ struct ContentView<ViewModel>: View where ViewModel: ContentViewModel {
 // MARK: - Previews
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = ContentViewModelImplementation(audioManager: AudioManager())
+        let cache = PhonemesCacheImplementation()
+        let vm = ContentViewModelImplementation(cache: cache, audioManager: AudioManager())
         ContentView(viewModel: vm)
     }
 }

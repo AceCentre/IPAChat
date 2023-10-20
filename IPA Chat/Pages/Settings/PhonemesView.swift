@@ -1,4 +1,5 @@
 import SwiftUI
+import PhonemesDB
 
 struct PhonemesView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
@@ -15,7 +16,7 @@ struct PhonemesView<ViewModel>: View where ViewModel: SettingsViewModel {
                     .onMove(perform: move)
                 }
             }
-            .navigationTitle("Reorder Phonemes")
+            .navigationTitle("settings.phonemes.navigation.title".localized)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -47,8 +48,9 @@ struct PhonemesView_Previews: PreviewProvider {
             Phoneme(symbol: "C", ipaNotation: "test", type: .nasal),
         ]
         
-        let viewModel = SettingsViewModelImplementation(audioManager: AudioManager())
+        let cache = SpeechCacheImplementation()
+        let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
         
-        return PhonemesView(viewModel: viewModel, phonemes: .constant(samplePhonemes))
+        return PhonemesView(viewModel: vm, phonemes: .constant(samplePhonemes))
     }
 }

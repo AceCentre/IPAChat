@@ -1,8 +1,10 @@
 import Foundation
 import Combine
+import PhonemesDB
 
 // MARK: - ContentViewModel Protocol
 protocol ContentViewModel: ObservableObject {
+    var cache: PhonemesCache { get set }
     var phonemes: [Phoneme] { get set }
     var selectedLanguage: String { get set }
     var searchQuery: String { get set }
@@ -14,8 +16,9 @@ protocol ContentViewModel: ObservableObject {
 
 // MARK: - ContentViewModel Implementation
 final class ContentViewModelImplementation: ContentViewModel {
-    @Published var phonemes: [Phoneme] = Phonemes.english
-    @Published var selectedLanguage: String = "English-GB" {
+    var cache: PhonemesCache
+    @Published var phonemes: [Phoneme] = PhonemesDB.english_GB.get
+    @Published var selectedLanguage: String = PhonemesDB.english_GB.rawValue {
         didSet {
             onPhonemeChange(selectedLanguage)
         }
@@ -24,7 +27,8 @@ final class ContentViewModelImplementation: ContentViewModel {
     @Published var ipaResult: String? = nil
     @Published var audioManager: AudioManager
 
-    init(audioManager: AudioManager) {
+    init(cache: PhonemesCache, audioManager: AudioManager) {
+        self.cache = cache
         self.audioManager = audioManager
         loadPhonemes()
     }
@@ -34,14 +38,9 @@ final class ContentViewModelImplementation: ContentViewModel {
 extension ContentViewModelImplementation {
     func onPhonemeChange(_ phoneme: String) {
         print("Language changed to: \(String(describing: phoneme))")
-        switch phoneme {
-        case "English-GB":
-            self.phonemes = Phonemes.english
-        case "French":
-            self.phonemes = Phonemes.french
-        default:
-            print("Unknown language")
-        }
+        
+        guard let selectedPhoneme = PhonemesDB(rawValue: phoneme) else { return }
+        self.phonemes = selectedPhoneme.get
     }
     
     func didTapSearch() {
@@ -57,15 +56,14 @@ extension ContentViewModelImplementation {
 // MARK: - Phonemes handling
 extension ContentViewModelImplementation {
     func savePhonemes() {
-        if let encoded = try? JSONEncoder().encode(phonemes) {
-            UserDefaults.standard.set(encoded, forKey: "phonemes")
-        }
+        cache.set(phonemes)
     }
     
     func loadPhonemes() {
-        if let savedPhonemes = UserDefaults.standard.object(forKey: "phonemes") as? Data,
-           let decodedPhonemes = try? JSONDecoder().decode([Phoneme].self, from: savedPhonemes) {
-            self.phonemes = decodedPhonemes
+        guard let savedPhonemes = cache.get() else {
+            print("Cant' get saved Phonemes!")
+            return
         }
+        self.phonemes = savedPhonemes
     }
 }
