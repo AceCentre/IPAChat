@@ -45,7 +45,7 @@ extension SettingsView {
         case .language:
             return AnyView(LanguageView(viewModel: viewModel, selectedLanguage: $selectedLanguage))
         case .selectVoice:
-            return AnyView(VoicesView(viewModel: viewModel))
+            return AnyView(VoicesView(viewModel: viewModel, selectedLanguage: $selectedLanguage))
         case .reorderPhonemes:
             return AnyView(PhonemesView(viewModel: viewModel, phonemes: $phonemes))
         }

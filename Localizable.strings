@@ -14,7 +14,9 @@
 "settings.voices.header.title" = "All voices:";
 "settings.selected.voice.header.title" = "Selected Voice:";
 "settings.selected.voice.not.selected" = "Not selected";
+"settings.selected.language.header.title" = "Selected Language:";
 "settings.selected.voice.play.sample" = "Play Sample";
+"settings.selected.voice.stop.sample" = "Stop";
 "settings.selected.voice.play.pitch" = "Pitch";
 "settings.selected.voice.play.rate" = "Rate";
 "settings.language.voice.header.title" = "Language";

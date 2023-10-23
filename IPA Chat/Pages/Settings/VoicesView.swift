@@ -3,13 +3,14 @@ import AVFAudio
 
 struct VoicesView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
+    @Binding var selectedLanguage: String
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
             List {
                 VStack {
-                    SelectedVoiceView(viewModel: viewModel)
+                    SelectedVoiceView(viewModel: viewModel, selectedLanguage: $selectedLanguage)
                 }
                 
                 Section(header: Text("settings.voices.header.title".localized).font(.title2)) { }
@@ -56,6 +57,7 @@ struct VoicesView_Previews: PreviewProvider {
     static var previews: some View {
         let cache = SpeechCacheImplementation()
         let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
-        return VoicesView(viewModel: vm)
+        @State var selectedLanguage = "EN"
+        return VoicesView(viewModel: vm, selectedLanguage: $selectedLanguage)
     }
 }
