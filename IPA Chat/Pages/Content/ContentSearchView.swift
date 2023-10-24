@@ -3,14 +3,29 @@ import SwiftUI
 struct ContentSearchView<ViewModel>: View where ViewModel: ContentViewModel {
     @ObservedObject var viewModel: ViewModel
     @Binding var showingSearchSheet: Bool
-
+    
     var body: some View {
         VStack {
-            Text("Search for a word")
-            TextField("Enter the word to find its IPA form.", text: $viewModel.searchQuery)
+            Text("content.search.title".localized)
+            TextField("content.search.text".localized, text: $viewModel.searchQuery)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            Button("Search") {
+                .onChange(of: viewModel.searchQuery) { oldValue, newValue in
+                    if oldValue.contains(" ") {
+                        viewModel.searchQuery = newValue.components(separatedBy: " ").joined()
+                    }
+                }
+                .overlay(
+                    Button(action: {
+                        viewModel.searchQuery = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .opacity(viewModel.searchQuery.isEmpty ? 0 : 1).padding()
+                    }
+                        .padding(),
+                    alignment: .trailing
+                )
+            Button("content.search.button.title") {
                 viewModel.didTapSearch()
                 showingSearchSheet = false
             }

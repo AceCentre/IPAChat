@@ -5,6 +5,11 @@
 
 // MARK: - Content Page
 "content.sequence.title" = "Current Sequence";
+"content.ipa.result.title" = "IPA Result:";
+"content.ipa.result.error" = "No IPA form found";
+"content.search.title" = "Search for a word";
+"content.search.text" = "Enter the word to find its IPA form.";
+"content.search.button.title" = "Search";
 
 // MARK: - Settings Page
 "settings.sample.text.to.speak" = "This is a sample of the voice.";

@@ -10,6 +10,7 @@ protocol ContentViewModel: ObservableObject {
     var searchQuery: String { get set }
     var audioManager: AudioManager { get set }
     var ipaResult: String? { get }
+    var ipaTitle: String? { get }
     func didTapSearch()
 }
 
@@ -25,6 +26,7 @@ final class ContentViewModelImplementation: ContentViewModel {
     }
     @Published var searchQuery: String = ""
     @Published var ipaResult: String? = nil
+    @Published var ipaTitle: String? = nil
     var audioManager: AudioManager
     
     init(cache: PhonemesCache, audioManager: AudioManager) {
@@ -46,9 +48,11 @@ extension ContentViewModelImplementation {
     func didTapSearch() {
         let lowercasedQuery = searchQuery.lowercased()
         if let ipaForm = audioManager.getPhonemeForString(selectedLanguage: selectedLanguage, searchString: lowercasedQuery) {
-            self.ipaResult = "IPA Result: \(ipaForm)"
+            var fixedForm = ipaForm.replacingOccurrences(of: "/", with: "")
+            self.ipaResult = fixedForm
+            self.ipaTitle = "content.ipa.result.title".localized
         } else {
-            self.ipaResult = "No IPA form found"
+            self.ipaTitle = "content.ipa.result.error".localized
         }
     }
 }

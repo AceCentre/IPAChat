@@ -30,17 +30,20 @@ struct ContentView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Au
                     }
                     .padding()
                     
-                        // Extended message bar
-                        TextField("content.sequence.title".localized, text: $audioManager.currentPhonemeSequence)
-                            .disabled(true)
-                            .padding()
-                            //.frame(maxWidth: .infinity)
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(10)
-
-                        //IPA Search
-                    Text(viewModel.ipaResult ?? "")
+                    // Extended message bar
+                    TextField("content.sequence.title".localized, text: $audioManager.currentPhonemeSequence)
+                        .disabled(true)
                         .padding()
+                    //.frame(maxWidth: .infinity)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(10)
+                    
+                    //IPA Search
+                    HStack {
+                            Text(viewModel.ipaTitle ?? "")
+                            Text(viewModel.ipaResult ?? "")
+                                .bold()
+                    }
                     
                     // Buttons for Speak, Clear, Babble Mode, and Settings
                     ContentButtonBarView(
