@@ -1,8 +1,9 @@
 import SwiftUI
 import PhonemesDB
 
-struct ContentView<ViewModel>: View where ViewModel: ContentViewModel {
+struct ContentView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Audio: AudioManager {
     @ObservedObject var viewModel: ViewModel
+    @ObservedObject var audioManager: Audio
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State var isEditMode: Bool = false
     @State var currentPhonemes: [Phoneme] = PhonemesDB.english_GB.get
@@ -22,28 +23,28 @@ struct ContentView<ViewModel>: View where ViewModel: ContentViewModel {
                                     Array(repeating: GridItem(.flexible()), count: 4), spacing: 10) {
                             ForEach(viewModel.phonemes) { phoneme in
                                 ContentPhonemeButtonView(
-                                    viewModel: viewModel,
+                                    viewModel: viewModel, audioManager: audioManager,
                                     phoneme: phoneme)
                             }
                         }
                     }
                     .padding()
                     
-                    // Extended message bar
-                    TextField("Current Sequence", text: $viewModel.audioManager.currentPhonemeSequence)
-                        .disabled(true)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(10)
-                    
-                    //IPA Search
+                        // Extended message bar
+                        TextField("content.sequence.title".localized, text: $audioManager.currentPhonemeSequence)
+                            .disabled(true)
+                            .padding()
+                            //.frame(maxWidth: .infinity)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(10)
+
+                        //IPA Search
                     Text(viewModel.ipaResult ?? "")
                         .padding()
                     
                     // Buttons for Speak, Clear, Babble Mode, and Settings
                     ContentButtonBarView(
-                        viewModel: viewModel,
+                        viewModel: viewModel, audioManager: audioManager,
                         showingSearchSheet: $showingSearchSheet)
                 }
                 .sheet(isPresented: $showingSearchSheet) {
@@ -65,6 +66,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let cache = PhonemesCacheImplementation()
         let vm = ContentViewModelImplementation(cache: cache, audioManager: AudioManager())
-        ContentView(viewModel: vm)
+        ContentView(viewModel: vm, audioManager: AudioManager())
     }
 }

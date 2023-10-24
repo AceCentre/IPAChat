@@ -14,7 +14,7 @@ struct IPA_ChatApp: App {
             let audioManager = AudioManager()
             let cache = PhonemesCacheImplementation()
             let viewModel = ContentViewModelImplementation(cache: cache, audioManager: audioManager)
-            ContentView(viewModel: viewModel)
+            ContentView(viewModel: viewModel, audioManager: audioManager)
         }
     }
 }

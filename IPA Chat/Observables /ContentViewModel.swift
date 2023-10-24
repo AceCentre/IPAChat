@@ -25,8 +25,8 @@ final class ContentViewModelImplementation: ContentViewModel {
     }
     @Published var searchQuery: String = ""
     @Published var ipaResult: String? = nil
-    @Published var audioManager: AudioManager
-
+    var audioManager: AudioManager
+    
     init(cache: PhonemesCache, audioManager: AudioManager) {
         self.cache = cache
         self.audioManager = audioManager

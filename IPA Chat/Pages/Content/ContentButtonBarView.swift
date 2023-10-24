@@ -1,7 +1,8 @@
 import SwiftUI
 
-struct ContentButtonBarView<ViewModel>: View where ViewModel: ContentViewModel {
+struct ContentButtonBarView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Audio: AudioManager {
     @ObservedObject var viewModel: ViewModel
+    @ObservedObject var audioManager: Audio
     
     @Binding var showingSearchSheet: Bool
 
@@ -9,14 +10,14 @@ struct ContentButtonBarView<ViewModel>: View where ViewModel: ContentViewModel {
         HStack {
             // Left-aligned buttons (Speak and Clear)
             Button(action: {
-                viewModel.audioManager.speakCurrentSequence()
+                audioManager.speakCurrentSequence()
             }) {
                 Image(systemName: "speaker.2.fill")
             }
             .padding()
             
             Button(action: {
-                viewModel.audioManager.clearSequence()
+                audioManager.clearSequence()
             }) {
                 Image(systemName: "xmark.circle.fill")
             }
@@ -32,7 +33,7 @@ struct ContentButtonBarView<ViewModel>: View where ViewModel: ContentViewModel {
             }
             .padding()
             Button(action: {
-                viewModel.audioManager.toggleButton()
+                audioManager.toggleButton()
             }) {
                 Image(systemName: "ellipsis.circle.fill")
                     .foregroundColor(viewModel.audioManager.isBabbleModeOn ? .green : .gray)
@@ -63,9 +64,9 @@ struct ContentButtonBarView<ViewModel>: View where ViewModel: ContentViewModel {
 struct ContentButtonBarView_Previews: PreviewProvider {
     static var previews: some View {
         let cache = PhonemesCacheImplementation()
-        let audio = AudioManager()
-        let vm = ContentViewModelImplementation(cache: cache, audioManager: audio)
+        let audioManager = AudioManager()
+        let vm = ContentViewModelImplementation(cache: cache, audioManager: audioManager)
         @State var showingSearchSheet = false
-        ContentButtonBarView(viewModel: vm, showingSearchSheet: $showingSearchSheet)
+        ContentButtonBarView(viewModel: vm, audioManager: audioManager, showingSearchSheet: $showingSearchSheet)
     }
 }

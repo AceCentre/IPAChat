@@ -3,6 +3,9 @@
   IPA Chat
 */
 
+// MARK: - Content Page
+"content.sequence.title" = "Current Sequence";
+
 // MARK: - Settings Page
 "settings.sample.text.to.speak" = "This is a sample of the voice.";
 "settings.section.button.language" = "Language";
