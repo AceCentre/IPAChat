@@ -12,6 +12,7 @@ protocol SettingsViewModel: ObservableObject {
     var pitch: Float { get set }
     var rate: Float { get set }
     var selectedVoice: AVSpeechSynthesisVoice? { get set }
+    var shouldShowRequestPersonalVoiceAuthorization: Bool { get set }
 }
 
 
@@ -20,8 +21,9 @@ final class SettingsViewModelImplementation: SettingsViewModel {
     var cache: SpeechCache
     @Published var audioManager: AudioManager
     @Published var languages = [""]
-    @Published var groupedVoices: [String: [VoiceWrapper]]
+    @Published var groupedVoices: [String: [VoiceWrapper]] = ["": []]
     @Published var sampleTextToSpeak: String = ""
+    @Published var shouldShowRequestPersonalVoiceAuthorization: Bool = false
     
     @Published var pitch: Float = 1.0 {
         didSet {
@@ -44,7 +46,17 @@ final class SettingsViewModelImplementation: SettingsViewModel {
     init(cache: SpeechCache, audioManager: AudioManager) {
         self.cache = cache
         self.audioManager = audioManager
-        self.groupedVoices = voicesByLanguage()
+        
+        AVSpeechSynthesizer.requestPersonalVoiceAuthorization { [weak self] status in
+            switch status {
+            case .notDetermined, .denied, .unsupported:
+                self?.shouldShowRequestPersonalVoiceAuthorization = true
+            case .authorized:
+                self?.groupedVoices = SortVoices.sortByLanguage()
+            @unknown default:
+                break
+            }
+        }
         
         self.languages = PhonemesDB.allCases.map { $0.rawValue }
         loadRateCache()
