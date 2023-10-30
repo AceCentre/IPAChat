@@ -50,15 +50,16 @@ struct ContentView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Au
                         viewModel: viewModel, audioManager: audioManager,
                         showingSearchSheet: $showingSearchSheet)
                 }
+                .onAppear(perform: {
+                    viewModel.viewDidAppear()
+                })
                 .sheet(isPresented: $showingSearchSheet) {
                     ContentSearchView(
                         viewModel: viewModel,
                         showingSearchSheet: $showingSearchSheet)
                 }
                 .padding(.horizontal)  // Add some horizontal padding to the VStack
-            }.onChange(of: viewModel.selectedLanguage, { _, newValue in
-                self.viewModel.selectedLanguage = newValue
-            })
+            }
             .navigationViewStyle(StackNavigationViewStyle())
         }
     }
@@ -67,8 +68,15 @@ struct ContentView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Au
 // MARK: - Previews
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let cache = PhonemesCacheImplementation()
-        let vm = ContentViewModelImplementation(cache: cache, audioManager: AudioManager())
+        let audioManager = AudioManager()
+        let phonemesCache = PhonemesCacheImplementation()
+        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        
+        let vm = ContentViewModelImplementation(
+            phonemesCache: phonemesCache,
+            audioManager: audioManager,
+            selectedLanguageCache: selectedLanguageCache)
+        
         ContentView(viewModel: vm, audioManager: AudioManager())
     }
 }

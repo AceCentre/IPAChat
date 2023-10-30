@@ -48,12 +48,17 @@ struct ContentButtonBarView<ViewModel, Audio>: View where ViewModel: ContentView
     }
     
     private func prepareSettingsView() -> some View {
-        let cache = SpeechCacheImplementation()
-        let vm = SettingsViewModelImplementation(cache: cache, audioManager: viewModel.audioManager)
+        let speechCache = SpeechCacheImplementation()
+        let phonemesCache = PhonemesCacheImplementation()
+        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let vm = SettingsViewModelImplementation(
+            speechCache: speechCache,
+            audioManager: viewModel.audioManager,
+            selectedLanguageCache: selectedLanguageCache,
+            phonemesCache: phonemesCache)
         
         let view = SettingsView(
             viewModel: vm,
-            selectedLanguage: $viewModel.selectedLanguage,
             phonemes: $viewModel.phonemes)
         
         return view
@@ -63,9 +68,14 @@ struct ContentButtonBarView<ViewModel, Audio>: View where ViewModel: ContentView
 // MARK: - Previews
 struct ContentButtonBarView_Previews: PreviewProvider {
     static var previews: some View {
-        let cache = PhonemesCacheImplementation()
         let audioManager = AudioManager()
-        let vm = ContentViewModelImplementation(cache: cache, audioManager: audioManager)
+        let phonemesCache = PhonemesCacheImplementation()
+        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        
+        let vm = ContentViewModelImplementation(
+            phonemesCache: phonemesCache,
+            audioManager: audioManager,
+            selectedLanguageCache: selectedLanguageCache)
         @State var showingSearchSheet = false
         ContentButtonBarView(viewModel: vm, audioManager: audioManager, showingSearchSheet: $showingSearchSheet)
     }

@@ -3,8 +3,9 @@ import AVFAudio
 
 struct SelectedVoiceView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
-    @Binding var selectedLanguage: String
+    //@Binding var selectedLanguage: String
     @State private var isPlayingSample = false
+    @State private var isPresented = false
     
     var body: some View {
         VStack {
@@ -14,11 +15,15 @@ struct SelectedVoiceView<ViewModel>: View where ViewModel: SettingsViewModel {
                     Text("settings.selected.voice.header.title".localized)
                     Spacer()
                     Text(selectedVoiceTitle)
+                    Image(systemName: "chevron.right")
+                }
+                .onTapGesture {
+                    self.isPresented = true
                 }
             }
             Divider()
             VStack {
-                let selectedVoiceTitle = selectedLanguage
+                let selectedVoiceTitle = viewModel.selectedLanguage.name.localized
                 HStack {
                     Text("settings.selected.language.header.title".localized)
                     Spacer()
@@ -64,6 +69,9 @@ struct SelectedVoiceView<ViewModel>: View where ViewModel: SettingsViewModel {
                     Text(String(format: "%.1f", viewModel.rate))
                 }
             }
+            .sheet(isPresented: $isPresented) {
+                VoiceByLanguageView(viewModel: viewModel)
+            }
         }
     }
 }
@@ -71,9 +79,14 @@ struct SelectedVoiceView<ViewModel>: View where ViewModel: SettingsViewModel {
 // MARK: - Previews
 struct SelectedVoiceView_Previews: PreviewProvider {
     static var previews: some View {
-        let cache = SpeechCacheImplementation()
-        let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
-        @State var selectedLanguage = "EN-GB"
-        return SelectedVoiceView(viewModel: vm, selectedLanguage: $selectedLanguage)
+        let speechCache = SpeechCacheImplementation()
+        let phonemesCache = PhonemesCacheImplementation()
+        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let vm = SettingsViewModelImplementation(
+            speechCache: speechCache,
+            audioManager: AudioManager(),
+            selectedLanguageCache: selectedLanguageCache,
+            phonemesCache: phonemesCache)
+        return SelectedVoiceView(viewModel: vm)
     }
 }

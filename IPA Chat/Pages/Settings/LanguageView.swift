@@ -2,7 +2,7 @@ import SwiftUI
 
 struct LanguageView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
-    @Binding var selectedLanguage: String
+    //@Binding var selectedLanguage: String
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -15,12 +15,12 @@ struct LanguageView<ViewModel>: View where ViewModel: SettingsViewModel {
                 Section(header: Text("settings.language.select".localized)) {
                     ForEach(viewModel.languages, id: \.self) { language in
                         Button(action: {
-                            selectedLanguage = language
+                            viewModel.selectedLanguage = language
                         }) {
                             HStack {
-                                Text(language)
+                                Text(language.name.localized)
                                 Spacer()
-                                if selectedLanguage == language {
+                                if viewModel.selectedLanguage == language {
                                     Image(systemName: "checkmark")
                                         .foregroundColor(.blue)
                                 }
@@ -47,9 +47,14 @@ struct LanguageView<ViewModel>: View where ViewModel: SettingsViewModel {
 // MARK: - Previews
 struct LanguageView_Previews: PreviewProvider {
     static var previews: some View {
-        let cache = SpeechCacheImplementation()
-        let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
-        @State var selectedLanguage = "EN"
-        return LanguageView(viewModel: vm, selectedLanguage: $selectedLanguage)
+        let speechCache = SpeechCacheImplementation()
+        let phonemesCache = PhonemesCacheImplementation()
+        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let vm = SettingsViewModelImplementation(
+            speechCache: speechCache,
+            audioManager: AudioManager(),
+            selectedLanguageCache: selectedLanguageCache,
+            phonemesCache: phonemesCache)
+        return LanguageView(viewModel: vm)
     }
 }

@@ -4,7 +4,7 @@ import PhonemesDB
 
 struct SettingsView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
-    @Binding var selectedLanguage: String
+    //@Binding var selectedLanguage: String
     @Binding var phonemes: [Phoneme]
     
     @State private var selectedSection: SettingsSectionType?
@@ -43,9 +43,9 @@ extension SettingsView {
     private func destinationView(for section: SettingsSectionType) -> some View {
         switch section {
         case .language:
-            return AnyView(LanguageView(viewModel: viewModel, selectedLanguage: $selectedLanguage))
+            return AnyView(LanguageView(viewModel: viewModel))
         case .selectVoice:
-            return AnyView(VoicesView(viewModel: viewModel, selectedLanguage: $selectedLanguage))
+            return AnyView(VoicesView(viewModel: viewModel))
         case .reorderPhonemes:
             return AnyView(PhonemesView(viewModel: viewModel, phonemes: $phonemes))
         }
@@ -55,14 +55,18 @@ extension SettingsView {
 // MARK: - Previews
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        let cache = SpeechCacheImplementation()
-        let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
-        @State var selectedLanguage = "test language"
+        let speechCache = SpeechCacheImplementation()
+        let phonemesCache = PhonemesCacheImplementation()
+        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let vm = SettingsViewModelImplementation(
+            speechCache: speechCache,
+            audioManager: AudioManager(),
+            selectedLanguageCache: selectedLanguageCache,
+            phonemesCache: phonemesCache)
         @State var phonemes = [Phoneme(symbol: "test", ipaNotation: "test", type: .nasal)]
         
         SettingsView(
             viewModel: vm,
-            selectedLanguage: $selectedLanguage,
             phonemes: $phonemes)
     }
 }

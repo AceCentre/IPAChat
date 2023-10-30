@@ -24,6 +24,8 @@
 		3709AA172AE2850600934DC5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3709AA162AE2850600934DC5 /* Localizable.strings */; };
 		3709AA1A2AE285A600934DC5 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709AA192AE285A600934DC5 /* String+Extensions.swift */; };
 		3709AA1C2AE2861000934DC5 /* SpeechCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709AA1B2AE2861000934DC5 /* SpeechCache.swift */; };
+		37163AC42AEFB88500A44444 /* VoiceByLanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37163AC32AEFB88500A44444 /* VoiceByLanguageView.swift */; };
+		3745D7362AEFD2030080A473 /* SelectedLanguageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D7352AEFD2030080A473 /* SelectedLanguageCache.swift */; };
 		378521992ADFC5DF007BB7FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378521982ADFC5DF007BB7FA /* ContentView.swift */; };
 		3785219B2ADFC62E007BB7FA /* VoiceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785219A2ADFC62E007BB7FA /* VoiceWrapper.swift */; };
 		3785219D2ADFC6DC007BB7FA /* ObservablePhoneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785219C2ADFC6DC007BB7FA /* ObservablePhoneme.swift */; };
@@ -70,6 +72,8 @@
 		3709AA162AE2850600934DC5 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		3709AA192AE285A600934DC5 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3709AA1B2AE2861000934DC5 /* SpeechCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechCache.swift; sourceTree = "<group>"; };
+		37163AC32AEFB88500A44444 /* VoiceByLanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceByLanguageView.swift; sourceTree = "<group>"; };
+		3745D7352AEFD2030080A473 /* SelectedLanguageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLanguageCache.swift; sourceTree = "<group>"; };
 		378521982ADFC5DF007BB7FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3785219A2ADFC62E007BB7FA /* VoiceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceWrapper.swift; sourceTree = "<group>"; };
 		3785219C2ADFC6DC007BB7FA /* ObservablePhoneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservablePhoneme.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				3709A9F72AE13BFC00934DC5 /* SettingsSectionButton.swift */,
 				3709A9F12AE1115900934DC5 /* PhonemesView.swift */,
 				3709A9F32AE1344000934DC5 /* VoicesView.swift */,
+				37163AC32AEFB88500A44444 /* VoiceByLanguageView.swift */,
 				3709AA142AE2785C00934DC5 /* SelectedVoiceView.swift */,
 				3709A9F52AE1347400934DC5 /* LanguageView.swift */,
 			);
@@ -178,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				3709AA122AE26F8800934DC5 /* PhonemesCache.swift */,
+				3745D7352AEFD2030080A473 /* SelectedLanguageCache.swift */,
 				3709AA1B2AE2861000934DC5 /* SpeechCache.swift */,
 			);
 			path = Cache;
@@ -391,6 +397,7 @@
 			files = (
 				3709AA1A2AE285A600934DC5 /* String+Extensions.swift in Sources */,
 				3785219D2ADFC6DC007BB7FA /* ObservablePhoneme.swift in Sources */,
+				3745D7362AEFD2030080A473 /* SelectedLanguageCache.swift in Sources */,
 				3709A9FC2AE146B200934DC5 /* SettingsSectionType.swift in Sources */,
 				3709A9F42AE1344000934DC5 /* VoicesView.swift in Sources */,
 				3709AA132AE26F8800934DC5 /* PhonemesCache.swift in Sources */,
@@ -409,6 +416,7 @@
 				3709A9F62AE1347400934DC5 /* LanguageView.swift in Sources */,
 				3785219B2ADFC62E007BB7FA /* VoiceWrapper.swift in Sources */,
 				3FEBE2812ADF450E00B55CFC /* IPA_ChatApp.swift in Sources */,
+				37163AC42AEFB88500A44444 /* VoiceByLanguageView.swift in Sources */,
 				3709A9F22AE1115900934DC5 /* PhonemesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,9 +12,17 @@ struct IPA_ChatApp: App {
     var body: some Scene {
         WindowGroup {
             let audioManager = AudioManager()
-            let cache = PhonemesCacheImplementation()
-            let viewModel = ContentViewModelImplementation(cache: cache, audioManager: audioManager)
-            ContentView(viewModel: viewModel, audioManager: audioManager)
+            let phonemesCache = PhonemesCacheImplementation()
+            let selectedLanguageCache = SelectedLanguageCacheImplementation()
+            
+            let viewModel = ContentViewModelImplementation(
+                phonemesCache: phonemesCache,
+                audioManager: audioManager,
+                selectedLanguageCache: selectedLanguageCache)
+            
+            ContentView(
+                viewModel: viewModel,
+                audioManager: audioManager)
         }
     }
 }

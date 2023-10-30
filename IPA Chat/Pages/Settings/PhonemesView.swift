@@ -48,8 +48,14 @@ struct PhonemesView_Previews: PreviewProvider {
             Phoneme(symbol: "C", ipaNotation: "test", type: .nasal),
         ]
         
-        let cache = SpeechCacheImplementation()
-        let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
+        let speechCache = SpeechCacheImplementation()
+        let phonemesCache = PhonemesCacheImplementation()
+        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let vm = SettingsViewModelImplementation(
+            speechCache: speechCache,
+            audioManager: AudioManager(),
+            selectedLanguageCache: selectedLanguageCache,
+            phonemesCache: phonemesCache)
         
         return PhonemesView(viewModel: vm, phonemes: .constant(samplePhonemes))
     }

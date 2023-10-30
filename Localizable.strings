@@ -31,3 +31,13 @@
 "settings.language.navigation.title" = "Language";
 "settings.language.speak.utterance" = "Speak utterance as selected";
 "settings.language.select" = "Select Language";
+"settings.voicebylanguage.title" = "Available Voices";
+"settings.voicebylanguage.navigation.title" = "Voices for";
+
+
+// MARK: - Phonemes Data Base:
+"phonemesDB.en.gb" = "English GB";
+"phonemesDB.en.us" = "English US";
+"phonemesDB.fr.fr" = "French";
+"phonemesDB.es.es" = "Spanish";
+"phonemesDB.pl.pl" = "Polish";

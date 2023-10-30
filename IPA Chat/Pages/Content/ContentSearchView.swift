@@ -39,8 +39,14 @@ struct ContentSearchView<ViewModel>: View where ViewModel: ContentViewModel {
 struct ContentSearchView_Previews: PreviewProvider {
     static var previews: some View {
         @State var showingSearchSheet = false
-        let cache = PhonemesCacheImplementation()
-        let vm = ContentViewModelImplementation(cache: cache, audioManager: AudioManager())
+        let audioManager = AudioManager()
+        let phonemesCache = PhonemesCacheImplementation()
+        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        
+        let vm = ContentViewModelImplementation(
+            phonemesCache: phonemesCache,
+            audioManager: audioManager,
+            selectedLanguageCache: selectedLanguageCache)
         ContentSearchView(viewModel: vm, showingSearchSheet: $showingSearchSheet)
     }
 }

@@ -3,14 +3,14 @@ import AVFAudio
 
 struct VoicesView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
-    @Binding var selectedLanguage: String
+    //@Binding var selectedLanguage: String
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
             List {
                 VStack {
-                    SelectedVoiceView(viewModel: viewModel, selectedLanguage: $selectedLanguage)
+                    SelectedVoiceView(viewModel: viewModel)
                 }
                 
                 Section(header: Text("settings.voices.header.title".localized).font(.title2)) { }
@@ -24,12 +24,12 @@ struct VoicesView<ViewModel>: View where ViewModel: SettingsViewModel {
                                     viewModel.selectedVoice = wrapper.voice
                                 }) {
                                     HStack {
-                                        Text(wrapper.voice.name)
-                                        Spacer()
-                                        if viewModel.selectedVoice == wrapper.voice {
-                                            Image(systemName: "checkmark")
-                                                .foregroundColor(.blue)
-                                        }
+                                                                            Text(wrapper.voice.name)
+                                                                            Spacer()
+                                                                            if viewModel.selectedVoice == wrapper.voice {
+                                                                                Image(systemName: "checkmark")
+                                                                                    .foregroundColor(.blue)
+                                                                            }
                                     }
                                 }
                             }
@@ -55,9 +55,14 @@ struct VoicesView<ViewModel>: View where ViewModel: SettingsViewModel {
 // MARK: - Previews
 struct VoicesView_Previews: PreviewProvider {
     static var previews: some View {
-        let cache = SpeechCacheImplementation()
-        let vm = SettingsViewModelImplementation(cache: cache, audioManager: AudioManager())
-        @State var selectedLanguage = "EN"
-        return VoicesView(viewModel: vm, selectedLanguage: $selectedLanguage)
+        let speechCache = SpeechCacheImplementation()
+        let phonemesCache = PhonemesCacheImplementation()
+        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let vm = SettingsViewModelImplementation(
+            speechCache: speechCache,
+            audioManager: AudioManager(),
+            selectedLanguageCache: selectedLanguageCache,
+            phonemesCache: phonemesCache)
+        return VoicesView(viewModel: vm)
     }
 }
