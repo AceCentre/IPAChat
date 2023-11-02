@@ -48,7 +48,7 @@ struct PhonemesView_Previews: PreviewProvider {
             Phoneme(symbol: "C", ipaNotation: "test", type: .nasal),
         ]
         
-        let speechCache = SpeechCacheImplementation()
+        let speechCache = SpeechCacheImplementation(userDefaults: UserDefaults.standard)
         let phonemesCache = PhonemesCacheImplementation()
         let selectedLanguageCache = SelectedLanguageCacheImplementation()
         let vm = SettingsViewModelImplementation(

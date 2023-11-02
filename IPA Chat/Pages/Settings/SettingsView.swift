@@ -55,7 +55,7 @@ extension SettingsView {
 // MARK: - Previews
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        let speechCache = SpeechCacheImplementation()
+        let speechCache = SpeechCacheImplementation(userDefaults: UserDefaults.standard)
         let phonemesCache = PhonemesCacheImplementation()
         let selectedLanguageCache = SelectedLanguageCacheImplementation()
         let vm = SettingsViewModelImplementation(

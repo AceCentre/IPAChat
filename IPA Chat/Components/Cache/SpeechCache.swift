@@ -10,17 +10,19 @@ enum SpeechCacheType<T> {
 }
 
 protocol SpeechCache {
+    var userDefaults: UserDefaults { get }
     func set<T>(_ value: T?, key: SpeechCacheType<T>.Keys)
     func get<T>(for key: SpeechCacheType<T>.Keys) -> SpeechCacheType<T>
 }
 
 struct SpeechCacheImplementation: SpeechCache {
+    let userDefaults: UserDefaults
     func set<T>(_ value: T?, key: SpeechCacheType<T>.Keys) {
-        UserDefaults.standard.set(value, forKey: key.rawValue)
+        userDefaults.set(value, forKey: key.rawValue)
     }
 
     func get<T>(for key: SpeechCacheType<T>.Keys) -> SpeechCacheType<T> {
-        if let value = UserDefaults.standard.object(forKey: key.rawValue) as? T {
+        if let value = userDefaults.object(forKey: key.rawValue) as? T {
             return SpeechCacheType.value(value)
         }
         return SpeechCacheType.value(nil)

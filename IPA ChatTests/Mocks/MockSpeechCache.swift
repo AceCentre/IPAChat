@@ -8,7 +8,13 @@ enum MockSpeechCacheValue {
 }
 
 final class MockSpeechCache: SpeechCache {
+    var userDefaults: UserDefaults
+    
     var storedValues: [String: AnyObject] = [:]
+    
+    init(userDefaults: UserDefaults) {
+        self.userDefaults = userDefaults
+    }
     
     func set<T>(_ value: T?, key: SpeechCacheType<T>.Keys) {
         storedValues[key.rawValue] = value as? AnyObject

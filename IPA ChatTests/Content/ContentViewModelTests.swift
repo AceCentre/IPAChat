@@ -1,75 +1,90 @@
 import XCTest
 import Combine
+import PhonemesDB
 @testable import IPA_Chat
 
-final class ContentViewModelTests: XCTestCase {
+final class ContentViewModelImplementationTests: XCTestCase {
     var viewModel: ContentViewModelImplementation!
-    var audioManager: MockAudioManager!
+    var phonemesCache: PhonemesCache!
+    var audioManager: AudioManager!
+    var selectedLanguageCache: SelectedLanguageCache!
     
     override func setUp() {
         super.setUp()
+        
+        // Create and inject mock dependencies
+        phonemesCache = MockPhonemesCache()
         audioManager = MockAudioManager()
-        viewModel = ContentViewModelImplementation(audioManager: audioManager)
+        selectedLanguageCache = MockSelectedLanguageCache()
+        
+        // Initialize the view model with mock dependencies
+        viewModel = ContentViewModelImplementation(
+            phonemesCache: phonemesCache,
+            audioManager: audioManager,
+            selectedLanguageCache: selectedLanguageCache
+        )
     }
     
     override func tearDown() {
-        viewModel = nil
-        audioManager = nil
         super.tearDown()
-    }
-    
-    // MARK: - Phoneme Change Tests
-    
-    func testOnPhonemeChange_EnglishGB() {
-        viewModel.onPhonemeChange("English-GB")
-        XCTAssertEqual(viewModel.phonemes, Phonemes.english)
-    }
-    
-    func testOnPhonemeChange_French() {
-        viewModel.onPhonemeChange("French")
-        XCTAssertEqual(viewModel.phonemes, Phonemes.french)
-    }
-    
-    func testOnPhonemeChange_UnknownLanguage() {
-        viewModel.onPhonemeChange("Spanish")
-        // Verify that phonemes remain unchanged when an unknown language is selected
-        XCTAssertEqual(viewModel.phonemes, Phonemes.english)
-    }
-    
-    // MARK: - Search Tests
-    
-    func testDidTapSearch_IPAFound() {
-        let searchString = "test"
-        audioManager.mockPhonemeForStringResult = "[Test]"
         
-        viewModel.searchQuery = searchString
-        viewModel.selectedLanguage = "English-GB"
-        viewModel.didTapSearch()
-        XCTAssertEqual(viewModel.ipaResult, "IPA Result: [Test]")
+        viewModel = nil
+        phonemesCache = nil
+        audioManager = nil
+        selectedLanguageCache = nil
     }
-    
-    func testDidTapSearch_IPANotFound() {
-        let searchString = "nonexistent"
-        audioManager.mockPhonemeForStringResult = nil
-        
-        viewModel.searchQuery = searchString
-        viewModel.selectedLanguage = "French"
-        viewModel.didTapSearch()
-        
-        XCTAssertEqual(viewModel.ipaResult, "No IPA form found")
-    }
-    
-    // MARK: - Phonemes Handling Tests
     
     func testLoadPhonemes() {
-        // Simulate saved phonemes in UserDefaults
-        let encodedPhonemes = try? JSONEncoder().encode(Phonemes.english)
-        UserDefaults.standard.set(encodedPhonemes, forKey: "phonemes")
+        // Mock saved phonemes
+        let mockPhonemes: [Phoneme] = [
+            Phoneme(symbol: "a", ipaNotation: "a", type: .vowel),
+            Phoneme(symbol: "b", ipaNotation: "b", type: .consonant)
+        ]
         
+        // Set the mock phonemes in the cache
+        (phonemesCache as! MockPhonemesCache).set(mockPhonemes)
+        
+        // Load phonemes using the view model
         viewModel.loadPhonemes()
         
-        XCTAssertEqual(viewModel.phonemes, Phonemes.english)
+        // Check if the loaded phonemes match the mock phonemes
+        XCTAssertEqual(viewModel.phonemes, mockPhonemes)
+    }
+    
+    func testDidTapSearchWithValidQuery() {
+        // Mock selected language
+        let selectedLanguage = PhonemesDB.english_GB
+        (selectedLanguageCache as! MockSelectedLanguageCache).set(selectedLanguage)
+        
+        // Mock search query
+        viewModel.searchQuery = "apple"
+        
+        // Mock IPA result
+        (audioManager as! MockAudioManager).mockPhonemeForStringResult = "ˈæpl"
+        
+        // Perform the search action
+        viewModel.didTapSearch()
+        
+        // Check if IPA result and title are set correctly
+        XCTAssertEqual(viewModel.ipaResult, "ˈæpl")
+        XCTAssertEqual(viewModel.ipaTitle, "content.ipa.result.title".localized)
+    }
+    
+    func testDidTapSearchWithInvalidQuery() {
+        // Mock selected language
+        let selectedLanguage = PhonemesDB.english_GB
+        (selectedLanguageCache as! MockSelectedLanguageCache).set(selectedLanguage)
+        
+        // Mock search query
+        viewModel.searchQuery = "xyz"
+        
+        // Mock IPA result to be nil (invalid query)
+        (audioManager as! MockAudioManager).mockPhonemeForStringResult = nil
+        
+        // Perform the search action
+        viewModel.didTapSearch()
+        
+        // Check if the title reflects the error
+        XCTAssertEqual(viewModel.ipaTitle, "content.ipa.result.error".localized)
     }
 }
-
-
