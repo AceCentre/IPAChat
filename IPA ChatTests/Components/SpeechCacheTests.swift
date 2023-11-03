@@ -3,20 +3,6 @@ import PhonemesDB
 @testable import IPA_Chat
 
 final class SpeechCacheImplementationTests: XCTestCase {
-
-    // Create a mock UserDefaults for testing
-    class MockUserDefaults: UserDefaults {
-        var storedData: [String: Any] = [:]
-
-        override func set(_ value: Any?, forKey defaultName: String) {
-            storedData[defaultName] = value
-        }
-
-        override func object(forKey defaultName: String) -> Any? {
-            return storedData[defaultName]
-        }
-    }
-
     var speechCache: SpeechCacheImplementation!
     var mockUserDefaults: MockUserDefaults!
 

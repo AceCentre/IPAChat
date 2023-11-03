@@ -68,14 +68,15 @@ struct ContentButtonBarView<ViewModel, Audio>: View where ViewModel: ContentView
 // MARK: - Previews
 struct ContentButtonBarView_Previews: PreviewProvider {
     static var previews: some View {
-        let audioManager = AudioManager()
-        let phonemesCache = PhonemesCacheImplementation()
-        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let audioManager = MockAudioManager()
+        let phonemesCache = MockPhonemesCache()
+        let selectedLanguageCache = MockSelectedLanguageCache()
         
-        let vm = ContentViewModelImplementation(
+        let vm = MockContentViewModel(
             phonemesCache: phonemesCache,
             audioManager: audioManager,
             selectedLanguageCache: selectedLanguageCache)
+        
         @State var showingSearchSheet = false
         ContentButtonBarView(viewModel: vm, audioManager: audioManager, showingSearchSheet: $showingSearchSheet)
     }

@@ -50,14 +50,16 @@ struct VoiceByLanguageView<ViewModel>: View where ViewModel: SettingsViewModel {
 // MARK: - Previews
 struct VoiceByLanguageView_Previews: PreviewProvider {
     static var previews: some View {
-        let speechCache = SpeechCacheImplementation(userDefaults: UserDefaults.standard)
-        let phonemesCache = PhonemesCacheImplementation()
-        let selectedLanguageCache = SelectedLanguageCacheImplementation()
-        let vm = SettingsViewModelImplementation(
+        let speechCache = MockSpeechCache(userDefaults: MockUserDefaults())
+        let phonemesCache = MockPhonemesCache()
+        let selectedLanguageCache = MockSelectedLanguageCache()
+        let audioManager = MockAudioManager()
+        
+        let vm = MockSettingsViewModel(
             speechCache: speechCache,
-            audioManager: AudioManager(),
             selectedLanguageCache: selectedLanguageCache,
-            phonemesCache: phonemesCache)
+            phonemesCache: phonemesCache,
+            audioManager: audioManager)
         
         return VoiceByLanguageView(viewModel: vm)
     }

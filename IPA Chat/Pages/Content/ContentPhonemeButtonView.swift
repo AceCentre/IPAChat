@@ -23,16 +23,20 @@ struct ContentPhonemeButtonView<ViewModel, Audio>: View where ViewModel: Content
 // MARK: - Previews
 struct ContentPhonemeButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        let audioManager = AudioManager()
-        let phonemesCache = PhonemesCacheImplementation()
-        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let audioManager = MockAudioManager()
+        let phonemesCache = MockPhonemesCache()
+        let selectedLanguageCache = MockSelectedLanguageCache()
         
-        let vm = ContentViewModelImplementation(
+        let vm = MockContentViewModel(
             phonemesCache: phonemesCache,
             audioManager: audioManager,
             selectedLanguageCache: selectedLanguageCache)
         
-        let phoneme = Phoneme(symbol: "test", ipaNotation: "test", type: .nasal)
+        let phoneme = Phoneme(
+            symbol: "test",
+            ipaNotation: "test",
+            type: .nasal)
+        
         ContentPhonemeButtonView(viewModel: vm, audioManager: audioManager, phoneme: phoneme)
     }
 }

@@ -39,11 +39,11 @@ struct ContentSearchView<ViewModel>: View where ViewModel: ContentViewModel {
 struct ContentSearchView_Previews: PreviewProvider {
     static var previews: some View {
         @State var showingSearchSheet = false
-        let audioManager = AudioManager()
-        let phonemesCache = PhonemesCacheImplementation()
-        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let audioManager = MockAudioManager()
+        let phonemesCache = MockPhonemesCache()
+        let selectedLanguageCache = MockSelectedLanguageCache()
         
-        let vm = ContentViewModelImplementation(
+        let vm = MockContentViewModel(
             phonemesCache: phonemesCache,
             audioManager: audioManager,
             selectedLanguageCache: selectedLanguageCache)

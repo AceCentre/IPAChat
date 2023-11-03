@@ -55,15 +55,22 @@ extension SettingsView {
 // MARK: - Previews
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        let speechCache = SpeechCacheImplementation(userDefaults: UserDefaults.standard)
-        let phonemesCache = PhonemesCacheImplementation()
-        let selectedLanguageCache = SelectedLanguageCacheImplementation()
-        let vm = SettingsViewModelImplementation(
+        let speechCache = MockSpeechCache(userDefaults: MockUserDefaults())
+        let phonemesCache = MockPhonemesCache()
+        let selectedLanguageCache = MockSelectedLanguageCache()
+        let audioManager = MockAudioManager()
+
+        let vm = MockSettingsViewModel(
             speechCache: speechCache,
-            audioManager: AudioManager(),
             selectedLanguageCache: selectedLanguageCache,
-            phonemesCache: phonemesCache)
-        @State var phonemes = [Phoneme(symbol: "test", ipaNotation: "test", type: .nasal)]
+            phonemesCache: phonemesCache,
+            audioManager: audioManager)
+        
+        @State var phonemes = [
+            Phoneme(
+                symbol: "test",
+                ipaNotation: "test",
+                type: .nasal)]
         
         SettingsView(
             viewModel: vm,

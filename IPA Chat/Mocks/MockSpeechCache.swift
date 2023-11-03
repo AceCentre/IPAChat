@@ -1,5 +1,4 @@
-import XCTest
-@testable import IPA_Chat
+import Foundation
 
 enum MockSpeechCacheValue {
     case pitch(Float)

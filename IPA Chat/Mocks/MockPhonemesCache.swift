@@ -1,6 +1,5 @@
 import Foundation
 import PhonemesDB
-@testable import IPA_Chat
 
 final class MockPhonemesCache: PhonemesCache {
     var storedPhonemes: [Phoneme]?

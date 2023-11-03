@@ -1,6 +1,6 @@
-@testable import IPA_Chat
+import Foundation
 
-class MockAudioManager: AudioManager {
+final class MockAudioManager: AudioManager {
     var mockPhonemeForStringResult: String?
     
     override func getPhonemeForString(selectedLanguage: String, searchString: String) -> String? {

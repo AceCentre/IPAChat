@@ -1,11 +1,13 @@
 import Foundation
 import PhonemesDB
 
+// MARK: - SelectedLanguageCache Protocol
 protocol SelectedLanguageCache {
     func set(_ language: PhonemesDB)
     func get() -> PhonemesDB?
 }
 
+// MARK: - SelectedLanguageCache Implementation
 struct SelectedLanguageCacheImplementation: SelectedLanguageCache {
     private enum Keys: String {
         case selectedPhoneme

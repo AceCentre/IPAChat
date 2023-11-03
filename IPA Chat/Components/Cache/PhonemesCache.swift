@@ -1,11 +1,13 @@
 import Foundation
 import PhonemesDB
 
+// MARK: - PhonemesCache Protocol
 protocol PhonemesCache {
     func set(_ phonemes: [Phoneme])
     func get() -> [Phoneme]?
 }
 
+// MARK: - PhonemesCache Implementation
 struct PhonemesCacheImplementation: PhonemesCache {
     private enum Keys: String {
         case phonemes

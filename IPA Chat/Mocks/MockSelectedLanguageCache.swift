@@ -1,5 +1,4 @@
-import XCTest
-@testable import IPA_Chat
+import Foundation
 import PhonemesDB
 
 final class MockSelectedLanguageCache: SelectedLanguageCache {

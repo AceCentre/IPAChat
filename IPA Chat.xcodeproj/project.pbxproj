@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3709A9DD2AE01A4400934DC5 /* IPA_ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9DC2AE01A4400934DC5 /* IPA_ChatTests.swift */; };
-		3709A9E52AE01A6500934DC5 /* MockAudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9E42AE01A6500934DC5 /* MockAudioManager.swift */; };
 		3709A9EA2AE01AAF00934DC5 /* ContentViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9E92AE01AAF00934DC5 /* ContentViewModelTests.swift */; };
 		3709A9EF2AE01C8000934DC5 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9EE2AE01C8000934DC5 /* SettingsViewModelTests.swift */; };
 		3709A9F22AE1115900934DC5 /* PhonemesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9F12AE1115900934DC5 /* PhonemesView.swift */; };
@@ -26,11 +25,8 @@
 		3709AA1C2AE2861000934DC5 /* SpeechCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709AA1B2AE2861000934DC5 /* SpeechCache.swift */; };
 		37163AC42AEFB88500A44444 /* VoiceByLanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37163AC32AEFB88500A44444 /* VoiceByLanguageView.swift */; };
 		3745D7362AEFD2030080A473 /* SelectedLanguageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D7352AEFD2030080A473 /* SelectedLanguageCache.swift */; };
-		3745D7382AF0E1C90080A473 /* MockPhonemesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D7372AF0E1C90080A473 /* MockPhonemesCache.swift */; };
 		3745D73B2AF0E27B0080A473 /* PhonemesCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D73A2AF0E27B0080A473 /* PhonemesCacheTests.swift */; };
-		3745D73D2AF0EA9F0080A473 /* MockSelectedLanguageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D73C2AF0EA9F0080A473 /* MockSelectedLanguageCache.swift */; };
 		3745D73F2AF0EB040080A473 /* SelectedLanguageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D73E2AF0EB040080A473 /* SelectedLanguageCacheTests.swift */; };
-		3745D7412AF0EB750080A473 /* MockSpeechCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D7402AF0EB750080A473 /* MockSpeechCache.swift */; };
 		3761379A2AF3C58600240090 /* SpeechCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376137992AF3C58600240090 /* SpeechCacheTests.swift */; };
 		378521992ADFC5DF007BB7FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378521982ADFC5DF007BB7FA /* ContentView.swift */; };
 		3785219B2ADFC62E007BB7FA /* VoiceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785219A2ADFC62E007BB7FA /* VoiceWrapper.swift */; };
@@ -41,6 +37,13 @@
 		378521B02AE00248007BB7FA /* ContentPhonemeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378521AF2AE00248007BB7FA /* ContentPhonemeButtonView.swift */; };
 		378521B42AE0026B007BB7FA /* ContentButtonBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378521B32AE0026B007BB7FA /* ContentButtonBarView.swift */; };
 		378521C02AE01022007BB7FA /* ContentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378521BF2AE01022007BB7FA /* ContentSearchView.swift */; };
+		3786D7942AF52DF40071327B /* MockAudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709A9E42AE01A6500934DC5 /* MockAudioManager.swift */; };
+		3786D7952AF52E170071327B /* MockPhonemesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D7372AF0E1C90080A473 /* MockPhonemesCache.swift */; };
+		3786D7962AF52E3E0071327B /* MockSelectedLanguageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D73C2AF0EA9F0080A473 /* MockSelectedLanguageCache.swift */; };
+		3786D7972AF52E6C0071327B /* MockSpeechCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745D7402AF0EB750080A473 /* MockSpeechCache.swift */; };
+		3786D7992AF52EFA0071327B /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786D7982AF52EFA0071327B /* MockUserDefaults.swift */; };
+		3786D79B2AF52FFC0071327B /* MockContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786D79A2AF52FFC0071327B /* MockContentViewModel.swift */; };
+		3786D79D2AF531550071327B /* MockSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786D79C2AF531550071327B /* MockSettingsViewModel.swift */; };
 		3FEBE2812ADF450E00B55CFC /* IPA_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBE2802ADF450E00B55CFC /* IPA_ChatApp.swift */; };
 		3FEBE2832ADF450E00B55CFC /* SortVoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBE2822ADF450E00B55CFC /* SortVoices.swift */; };
 		3FEBE2852ADF451100B55CFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FEBE2842ADF451100B55CFC /* Assets.xcassets */; };
@@ -95,6 +98,9 @@
 		378521AF2AE00248007BB7FA /* ContentPhonemeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPhonemeButtonView.swift; sourceTree = "<group>"; };
 		378521B32AE0026B007BB7FA /* ContentButtonBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentButtonBarView.swift; sourceTree = "<group>"; };
 		378521BF2AE01022007BB7FA /* ContentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSearchView.swift; sourceTree = "<group>"; };
+		3786D7982AF52EFA0071327B /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
+		3786D79A2AF52FFC0071327B /* MockContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContentViewModel.swift; sourceTree = "<group>"; };
+		3786D79C2AF531550071327B /* MockSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSettingsViewModel.swift; sourceTree = "<group>"; };
 		3FEBE27D2ADF450E00B55CFC /* IPA Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FEBE2802ADF450E00B55CFC /* IPA_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_ChatApp.swift; sourceTree = "<group>"; };
 		3FEBE2822ADF450E00B55CFC /* SortVoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortVoices.swift; sourceTree = "<group>"; };
@@ -148,10 +154,6 @@
 		3709A9E32AE01A5F00934DC5 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				3709A9E42AE01A6500934DC5 /* MockAudioManager.swift */,
-				3745D7372AF0E1C90080A473 /* MockPhonemesCache.swift */,
-				3745D73C2AF0EA9F0080A473 /* MockSelectedLanguageCache.swift */,
-				3745D7402AF0EB750080A473 /* MockSpeechCache.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -256,6 +258,20 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
+		3786D7932AF52D9E0071327B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				3709A9E42AE01A6500934DC5 /* MockAudioManager.swift */,
+				3745D7372AF0E1C90080A473 /* MockPhonemesCache.swift */,
+				3745D73C2AF0EA9F0080A473 /* MockSelectedLanguageCache.swift */,
+				3745D7402AF0EB750080A473 /* MockSpeechCache.swift */,
+				3786D7982AF52EFA0071327B /* MockUserDefaults.swift */,
+				3786D79A2AF52FFC0071327B /* MockContentViewModel.swift */,
+				3786D79C2AF531550071327B /* MockSettingsViewModel.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		3FEBE2742ADF450E00B55CFC = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +295,7 @@
 		3FEBE27F2ADF450E00B55CFC /* IPA Chat */ = {
 			isa = PBXGroup;
 			children = (
+				3786D7932AF52D9E0071327B /* Mocks */,
 				3709AA182AE2853A00934DC5 /* Utilities */,
 				378521A32ADFEA31007BB7FA /* Pages */,
 				378521A22ADFEA2A007BB7FA /* Observables  */,
@@ -410,11 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3745D73D2AF0EA9F0080A473 /* MockSelectedLanguageCache.swift in Sources */,
-				3709A9E52AE01A6500934DC5 /* MockAudioManager.swift in Sources */,
 				3761379A2AF3C58600240090 /* SpeechCacheTests.swift in Sources */,
-				3745D7382AF0E1C90080A473 /* MockPhonemesCache.swift in Sources */,
-				3745D7412AF0EB750080A473 /* MockSpeechCache.swift in Sources */,
 				3709A9DD2AE01A4400934DC5 /* IPA_ChatTests.swift in Sources */,
 				3709A9EA2AE01AAF00934DC5 /* ContentViewModelTests.swift in Sources */,
 				3709A9EF2AE01C8000934DC5 /* SettingsViewModelTests.swift in Sources */,
@@ -427,28 +440,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3786D7942AF52DF40071327B /* MockAudioManager.swift in Sources */,
 				3709AA1A2AE285A600934DC5 /* String+Extensions.swift in Sources */,
+				3786D79B2AF52FFC0071327B /* MockContentViewModel.swift in Sources */,
 				3785219D2ADFC6DC007BB7FA /* ObservablePhoneme.swift in Sources */,
 				3745D7362AEFD2030080A473 /* SelectedLanguageCache.swift in Sources */,
 				3709A9FC2AE146B200934DC5 /* SettingsSectionType.swift in Sources */,
 				3709A9F42AE1344000934DC5 /* VoicesView.swift in Sources */,
+				3786D7952AF52E170071327B /* MockPhonemesCache.swift in Sources */,
 				3709AA132AE26F8800934DC5 /* PhonemesCache.swift in Sources */,
 				3709A9F82AE13BFC00934DC5 /* SettingsSectionButton.swift in Sources */,
 				3785219F2ADFC718007BB7FA /* AudioManager.swift in Sources */,
 				3709AA1C2AE2861000934DC5 /* SpeechCache.swift in Sources */,
 				3709AA152AE2785C00934DC5 /* SelectedVoiceView.swift in Sources */,
+				3786D7972AF52E6C0071327B /* MockSpeechCache.swift in Sources */,
 				378521992ADFC5DF007BB7FA /* ContentView.swift in Sources */,
+				3786D79D2AF531550071327B /* MockSettingsViewModel.swift in Sources */,
 				378521C02AE01022007BB7FA /* ContentSearchView.swift in Sources */,
 				378521B02AE00248007BB7FA /* ContentPhonemeButtonView.swift in Sources */,
 				378521AB2ADFFA5C007BB7FA /* SettingsViewModel.swift in Sources */,
 				378521B42AE0026B007BB7FA /* ContentButtonBarView.swift in Sources */,
 				378521A72ADFEB99007BB7FA /* ContentViewModel.swift in Sources */,
 				3FEBE2832ADF450E00B55CFC /* SortVoices.swift in Sources */,
+				3786D7962AF52E3E0071327B /* MockSelectedLanguageCache.swift in Sources */,
 				3709A9FA2AE13CA400934DC5 /* SettingsView.swift in Sources */,
 				3709A9F62AE1347400934DC5 /* LanguageView.swift in Sources */,
 				3785219B2ADFC62E007BB7FA /* VoiceWrapper.swift in Sources */,
 				3FEBE2812ADF450E00B55CFC /* IPA_ChatApp.swift in Sources */,
 				37163AC42AEFB88500A44444 /* VoiceByLanguageView.swift in Sources */,
+				3786D7992AF52EFA0071327B /* MockUserDefaults.swift in Sources */,
 				3709A9F22AE1115900934DC5 /* PhonemesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

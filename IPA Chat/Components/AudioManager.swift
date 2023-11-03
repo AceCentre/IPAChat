@@ -3,7 +3,7 @@ import AVFoundation
 import SQLite
 import PhonemesDB
 
-class AudioManager: ObservableObject {
+final class AudioManager: ObservableObject {
     private var synthesizer = AVSpeechSynthesizer()
     public var phonemeString = NSMutableAttributedString(string: "")
     @Published var currentPhonemeSequence: String = ""

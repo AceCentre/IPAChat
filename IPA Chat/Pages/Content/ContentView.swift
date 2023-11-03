@@ -68,15 +68,15 @@ struct ContentView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Au
 // MARK: - Previews
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let audioManager = AudioManager()
-        let phonemesCache = PhonemesCacheImplementation()
-        let selectedLanguageCache = SelectedLanguageCacheImplementation()
+        let audioManager = MockAudioManager()
+        let phonemesCache = MockPhonemesCache()
+        let selectedLanguageCache = MockSelectedLanguageCache()
         
-        let vm = ContentViewModelImplementation(
+        let vm = MockContentViewModel(
             phonemesCache: phonemesCache,
             audioManager: audioManager,
             selectedLanguageCache: selectedLanguageCache)
         
-        ContentView(viewModel: vm, audioManager: AudioManager())
+        ContentView(viewModel: vm, audioManager: audioManager)
     }
 }
