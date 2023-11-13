@@ -10,7 +10,7 @@ struct VoicesView<ViewModel>: View where ViewModel: SettingsViewModel {
         NavigationView {
             List {
                 VStack {
-                    SelectedVoiceView(viewModel: viewModel)
+                    SelectedVoiceView(viewModel: viewModel, audioManager: AudioManager())
                 }
                 
                 Section(header: Text("settings.voices.header.title".localized).font(.title2)) { }

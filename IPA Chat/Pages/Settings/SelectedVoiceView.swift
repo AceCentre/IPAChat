@@ -1,11 +1,12 @@
 import SwiftUI
 import AVFAudio
 
-struct SelectedVoiceView<ViewModel>: View where ViewModel: SettingsViewModel {
+struct SelectedVoiceView<ViewModel, Audio>: View where ViewModel: SettingsViewModel, Audio: AudioManager {
     @ObservedObject var viewModel: ViewModel
-    //@Binding var selectedLanguage: String
+    @ObservedObject var audioManager: Audio
     @State private var isPlayingSample = false
     @State private var isPresented = false
+    private let synthesizer = AVSpeechSynthesizer()
     
     var body: some View {
         VStack {
@@ -37,14 +38,12 @@ struct SelectedVoiceView<ViewModel>: View where ViewModel: SettingsViewModel {
                     if isPlayingSample {
                         if let voice = viewModel.selectedVoice {
                             let textToSpeak = "settings.sample.text.to.speak".localized
-                            let utterance = AVSpeechUtterance(string: textToSpeak)
-                            utterance.voice = voice
-                            utterance.pitchMultiplier = Float(viewModel.pitch)
-                            utterance.rate = Float(viewModel.rate)
-                            AVSpeechSynthesizer().speak(utterance)
+                            audioManager.phonemeString = NSMutableAttributedString(string: textToSpeak)
+                            audioManager.selectedVoice = voice
+                            audioManager.speakCurrentSequence()
                         }
                     } else {
-                        AVSpeechSynthesizer().stopSpeaking(at: .immediate)
+                        audioManager.clearSequence()
                     }
                 }) {
                     HStack {
@@ -90,6 +89,6 @@ struct SelectedVoiceView_Previews: PreviewProvider {
             phonemesCache: phonemesCache,
             audioManager: audioManager)
         
-        return SelectedVoiceView(viewModel: vm)
+        return SelectedVoiceView(viewModel: vm, audioManager: audioManager)
     }
 }
