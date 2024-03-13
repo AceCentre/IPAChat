@@ -9,19 +9,20 @@ import SwiftUI
 
 @main
 struct IPA_ChatApp: App {
-    @StateObject var voiceEngine: VoiceEngine = VoiceEngine()
-
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(voiceEngine)
-                .onAppear {
-                    voiceEngine.load()
-                }
-                .onDisappear {
-                    voiceEngine.save()
-                }
-
+            let audioManager = AudioManager()
+            let phonemesCache = PhonemesCacheImplementation()
+            let selectedLanguageCache = SelectedLanguageCacheImplementation()
+            
+            let viewModel = ContentViewModelImplementation(
+                phonemesCache: phonemesCache,
+                audioManager: audioManager,
+                selectedLanguageCache: selectedLanguageCache)
+            
+            ContentView(
+                viewModel: viewModel,
+                audioManager: audioManager)
         }
     }
 }

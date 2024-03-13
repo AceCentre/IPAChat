@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  IPA Chat
+*/
+
+// MARK: - Content Page
+"content.sequence.title" = "Current Sequence";
+"content.ipa.result.title" = "IPA Result:";
+"content.ipa.result.error" = "No IPA form found";
+"content.search.title" = "Search for a word";
+"content.search.text" = "Enter the word to find its IPA form.";
+"content.search.button.title" = "Search";
+
+// MARK: - Settings Page
+"settings.sample.text.to.speak" = "This is a sample of the voice.";
+"settings.section.button.language" = "Language";
+"settings.section.button.voices" = "Voices";
+"settings.section.button.reorder" = "Reorder Phonemes";
+"settings.navigation.title" = "Settings";
+"settings.phonemes.navigation.title" = "Reorder Phonemes";
+"settings.voices.navigation.title" = "Voices";
+"settings.voices.header.title" = "All voices:";
+"settings.selected.voice.header.title" = "Selected Voice:";
+"settings.selected.voice.not.selected" = "Not selected";
+"settings.selected.language.header.title" = "Selected Language:";
+"settings.selected.voice.play.sample" = "Play Sample";
+"settings.selected.voice.stop.sample" = "Stop";
+"settings.selected.voice.play.pitch" = "Pitch";
+"settings.selected.voice.play.rate" = "Rate";
+"settings.language.voice.header.title" = "Language";
+"settings.language.navigation.title" = "Language";
+"settings.language.speak.utterance" = "Speak utterance as selected";
+"settings.language.select" = "Select Language";
+"settings.voicebylanguage.title" = "Available Voices";
+"settings.voicebylanguage.navigation.title" = "Voices for";
+
+
+// MARK: - Phonemes Data Base:
+"phonemesDB.en.gb" = "English GB";
+"phonemesDB.en.us" = "English US";
+"phonemesDB.fr.fr" = "French";
+"phonemesDB.es.es" = "Spanish";
+"phonemesDB.pl.pl" = "Polish";

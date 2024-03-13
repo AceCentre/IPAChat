@@ -1,0 +1,43 @@
+import Foundation
+
+@available(macOS 12.0, iOS 15.0, *)
+extension DataBase {
+    static let polish_list: [Phoneme] = [
+        Phoneme(symbol: "i", ipaNotation: "i", type: .vowel, x: 0, y: 0),
+        Phoneme(symbol: "e", ipaNotation: "ɛ", type: .vowel, x: 0, y: 0),
+        Phoneme(symbol: "a", ipaNotation: "a", type: .vowel, x: 0, y: 0),
+        Phoneme(symbol: "o", ipaNotation: "ɔ", type: .vowel, x: 0, y: 0),
+        Phoneme(symbol: "u", ipaNotation: "u", type: .vowel, x: 0, y: 0),
+        Phoneme(symbol: "y", ipaNotation: "ɨ", type: .vowel, x: 0, y: 0),
+        Phoneme(symbol: "p", ipaNotation: "p", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "b", ipaNotation: "b", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "t", ipaNotation: "t", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "d", ipaNotation: "d", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "k", ipaNotation: "k", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "g", ipaNotation: "ɡ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "f", ipaNotation: "f", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "v", ipaNotation: "v", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "s", ipaNotation: "s", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "z", ipaNotation: "z", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ʂ", ipaNotation: "ʂ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ʐ", ipaNotation: "ʐ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ɕ", ipaNotation: "ɕ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ʑ", ipaNotation: "ʑ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "m", ipaNotation: "m", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "n", ipaNotation: "n", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ɲ", ipaNotation: "ɲ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ŋ", ipaNotation: "ŋ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "l", ipaNotation: "l", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ɫ", ipaNotation: "ɫ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "r", ipaNotation: "r", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "w", ipaNotation: "w", type: .semivowel, x: 0, y: 0),
+        Phoneme(symbol: "j", ipaNotation: "j", type: .semivowel, x: 0, y: 0),
+        Phoneme(symbol: "ʦ", ipaNotation: "ʦ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ʣ", ipaNotation: "ʣ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ʧ", ipaNotation: "ʧ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: "ʤ", ipaNotation: "ʤ", type: .consonant, x: 0, y: 0),
+        Phoneme(symbol: ",", ipaNotation: ",", type: .stress, x: 0, y: 0),
+        Phoneme(symbol: "ˈ", ipaNotation: "ˈ", type: .stress, x: 0, y: 0),
+        Phoneme(symbol: "‖", ipaNotation: "‖", type: .pause, x: 0, y: 0),
+        Phoneme(symbol: "‖‖", ipaNotation: "‖‖", type: .pause,  x: 0, y: 0)]
+}
