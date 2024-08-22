@@ -4,11 +4,11 @@ import PhonemesDB
 
 struct SettingsView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
-    //@Binding var selectedLanguage: String
     @Binding var phonemes: [Phoneme]
     
-    @State private var selectedSection: SettingsSectionType?
-    @State private var isPresented = false
+    @State private var showLanguageView = false
+    @State private var showVoicesView = false
+    @State private var showReorderPhonemesView = false
     
     let sectionButtons: [SettingsSectionButton] = [
         SettingsSectionButton(title: "settings.section.button.language".localized, sectionType: .language),
@@ -18,25 +18,51 @@ struct SettingsView<ViewModel>: View where ViewModel: SettingsViewModel {
     
     var body: some View {
         NavigationStack {
-            List(sectionButtons, id: \.self) { button in
+            List {
                 Button(action: {
-                    selectedSection = button.sectionType
-                    isPresented = true
+                    showLanguageView = true
                 }) {
                     HStack {
-                        Text(button.title)
+                        Text("settings.section.button.language".localized)
                         Spacer()
                         Image(systemName: "chevron.right")
                     }
                 }
-                .sheet(isPresented: $isPresented) {
-                    self.destinationView(for: selectedSection!)
+                .sheet(isPresented: $showLanguageView) {
+                    LanguageView(viewModel: viewModel)
+                }
+
+                Button(action: {
+                    showVoicesView = true
+                }) {
+                    HStack {
+                        Text("settings.section.button.voices".localized)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                    }
+                }
+                .sheet(isPresented: $showVoicesView) {
+                    VoicesView(viewModel: viewModel)
+                }
+
+                Button(action: {
+                    showReorderPhonemesView = true
+                }) {
+                    HStack {
+                        Text("settings.section.button.reorder".localized)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                    }
+                }
+                .sheet(isPresented: $showReorderPhonemesView) {
+                    PhonemesView(viewModel: viewModel, phonemes: $phonemes)
                 }
             }
         }
         .navigationTitle("settings.navigation.title".localized)
     }
 }
+
 
 // MARK: - Destination Views
 extension SettingsView {
