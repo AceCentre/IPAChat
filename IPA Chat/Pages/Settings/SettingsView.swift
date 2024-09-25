@@ -55,7 +55,7 @@ struct SettingsView<ViewModel>: View where ViewModel: SettingsViewModel {
                     }
                 }
                 .sheet(isPresented: $showReorderPhonemesView) {
-                    PhonemesView(viewModel: viewModel, phonemes: $phonemes)
+                    PhonemesView(viewModel: viewModel)
                 }
             }
         }
@@ -73,7 +73,7 @@ extension SettingsView {
         case .selectVoice:
             return AnyView(VoicesView(viewModel: viewModel))
         case .reorderPhonemes:
-            return AnyView(PhonemesView(viewModel: viewModel, phonemes: $phonemes))
+            return AnyView(PhonemesView(viewModel: viewModel))
         }
     }
 }

@@ -14,6 +14,10 @@ class MockSettingsViewModel: SettingsViewModel {
     var selectedVoice: AVSpeechSynthesisVoice?
     var shouldShowRequestPersonalVoiceAuthorization: Bool = false
     var selectedLanguage: PhonemesDB = .english_GB
+    
+    var phonemes: [Phoneme] {
+        return phonemesCache.get() ?? []
+    }
 
     init(speechCache: SpeechCache, selectedLanguageCache: SelectedLanguageCache, phonemesCache: PhonemesCache, audioManager: AudioManager) {
         self.speechCache = speechCache
@@ -26,3 +30,4 @@ class MockSettingsViewModel: SettingsViewModel {
         groupedVoices = ["English": [VoiceWrapper(voice: selectedVoice!)]]
     }
 }
+

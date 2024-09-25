@@ -44,6 +44,8 @@
 		3786D7992AF52EFA0071327B /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786D7982AF52EFA0071327B /* MockUserDefaults.swift */; };
 		3786D79B2AF52FFC0071327B /* MockContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786D79A2AF52FFC0071327B /* MockContentViewModel.swift */; };
 		3786D79D2AF531550071327B /* MockSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786D79C2AF531550071327B /* MockSettingsViewModel.swift */; };
+		3F8064C82C77FCAE0072C943 /* PhonemeCustomizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8064C72C77FCAE0072C943 /* PhonemeCustomizationView.swift */; };
+		3F8064CA2C7867250072C943 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8064C92C7867250072C943 /* ImagePicker.swift */; };
 		3FEBE2812ADF450E00B55CFC /* IPA_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBE2802ADF450E00B55CFC /* IPA_ChatApp.swift */; };
 		3FEBE2832ADF450E00B55CFC /* SortVoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBE2822ADF450E00B55CFC /* SortVoices.swift */; };
 		3FEBE2852ADF451100B55CFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FEBE2842ADF451100B55CFC /* Assets.xcassets */; };
@@ -101,6 +103,8 @@
 		3786D7982AF52EFA0071327B /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
 		3786D79A2AF52FFC0071327B /* MockContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContentViewModel.swift; sourceTree = "<group>"; };
 		3786D79C2AF531550071327B /* MockSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSettingsViewModel.swift; sourceTree = "<group>"; };
+		3F8064C72C77FCAE0072C943 /* PhonemeCustomizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonemeCustomizationView.swift; sourceTree = "<group>"; };
+		3F8064C92C7867250072C943 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3FEBE27D2ADF450E00B55CFC /* IPA Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FEBE2802ADF450E00B55CFC /* IPA_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_ChatApp.swift; sourceTree = "<group>"; };
 		3FEBE2822ADF450E00B55CFC /* SortVoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortVoices.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				37163AC32AEFB88500A44444 /* VoiceByLanguageView.swift */,
 				3709AA142AE2785C00934DC5 /* SelectedVoiceView.swift */,
 				3709A9F52AE1347400934DC5 /* LanguageView.swift */,
+				3F8064C72C77FCAE0072C943 /* PhonemeCustomizationView.swift */,
+				3F8064C92C7867250072C943 /* ImagePicker.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				3785219F2ADFC718007BB7FA /* AudioManager.swift in Sources */,
 				3709AA1C2AE2861000934DC5 /* SpeechCache.swift in Sources */,
 				3709AA152AE2785C00934DC5 /* SelectedVoiceView.swift in Sources */,
+				3F8064CA2C7867250072C943 /* ImagePicker.swift in Sources */,
 				3786D7972AF52E6C0071327B /* MockSpeechCache.swift in Sources */,
 				378521992ADFC5DF007BB7FA /* ContentView.swift in Sources */,
 				3786D79D2AF531550071327B /* MockSettingsViewModel.swift in Sources */,
@@ -466,6 +473,7 @@
 				3709A9FA2AE13CA400934DC5 /* SettingsView.swift in Sources */,
 				3709A9F62AE1347400934DC5 /* LanguageView.swift in Sources */,
 				3785219B2ADFC62E007BB7FA /* VoiceWrapper.swift in Sources */,
+				3F8064C82C77FCAE0072C943 /* PhonemeCustomizationView.swift in Sources */,
 				3FEBE2812ADF450E00B55CFC /* IPA_ChatApp.swift in Sources */,
 				37163AC42AEFB88500A44444 /* VoiceByLanguageView.swift in Sources */,
 				3786D7992AF52EFA0071327B /* MockUserDefaults.swift in Sources */,

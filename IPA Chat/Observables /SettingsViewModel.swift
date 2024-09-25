@@ -8,6 +8,7 @@ protocol SettingsViewModel: ObservableObject {
     var speechCache: SpeechCache { get }
     var selectedLanguageCache: SelectedLanguageCache { get }
     var phonemesCache: PhonemesCache { get }
+    var phonemes: [Phoneme] { get } // Add this line
     var audioManager: AudioManager { get set }
     var languages: [PhonemesDB] { get }
     var groupedVoices: [String: [VoiceWrapper]] { get }
@@ -19,11 +20,15 @@ protocol SettingsViewModel: ObservableObject {
 }
 
 
+
 // MARK: - SettingsViewModel Implementation
 final class SettingsViewModelImplementation: SettingsViewModel {
     var speechCache: SpeechCache
     var selectedLanguageCache: SelectedLanguageCache
     var phonemesCache: PhonemesCache
+    var phonemes: [Phoneme] {
+            phonemesCache.get() ?? []
+        }
     
     @Published var audioManager: AudioManager
     @Published var languages = [PhonemesDB.english_GB]

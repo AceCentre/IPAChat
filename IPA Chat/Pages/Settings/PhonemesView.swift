@@ -3,39 +3,53 @@ import PhonemesDB
 
 struct PhonemesView<ViewModel>: View where ViewModel: SettingsViewModel {
     @ObservedObject var viewModel: ViewModel
-    @Binding var phonemes: [Phoneme]
-    @Environment(\.presentationMode) var presentationMode
+    @State private var observablePhonemes: [ObservablePhoneme] = []
+    @State private var selectedPhoneme: ObservablePhoneme?
+    @State private var showingCustomizationSheet = false
     
     var body: some View {
         NavigationStack {
-            Form {
-                List {
-                    ForEach(phonemes) { phoneme in
-                        Text(phoneme.symbol)
+            List {
+                ForEach(observablePhonemes) { observablePhoneme in
+                    Button(action: {
+                        selectedPhoneme = observablePhoneme
+                        // Ensure the phoneme is set before presenting the sheet
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            showingCustomizationSheet = true
+                        }
+                    }) {
+                        HStack {
+                            if let customImage = observablePhoneme.customImage {
+                                Image(uiImage: customImage)
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                            } else if let customText = observablePhoneme.customText {
+                                Text(customText)
+                            } else {
+                                Text(observablePhoneme.phoneme.symbol)
+                            }
+                            Spacer()
+                            Rectangle()
+                                .fill(observablePhoneme.color)
+                                .frame(width: 20, height: 20)
+                        }
                     }
-                    .onMove(perform: move)
                 }
             }
-            .navigationTitle("settings.phonemes.navigation.title".localized)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "xmark")
-                    }
+            .navigationTitle("Phonemes")
+            .sheet(isPresented: $showingCustomizationSheet) {
+                if let phoneme = selectedPhoneme {
+                    PhonemeCustomizationView(observablePhoneme: .constant(phoneme))
+                } else {
+                    // Provide a fallback view to prevent a blank screen
+                    Text("No phoneme selected")
                 }
-                
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
+            }
+            .onAppear {
+                // Initialize observablePhonemes from the existing phoneme list
+                observablePhonemes = viewModel.phonemes.map { ObservablePhoneme(phoneme: $0) }
             }
         }
-    }
-    
-    func move(from source: IndexSet, to destination: Int) {
-        // Move elements around
-        phonemes.move(fromOffsets: source, toOffset: destination)
     }
 }
 
@@ -50,6 +64,7 @@ struct PhonemesView_Previews: PreviewProvider {
         
         let speechCache = MockSpeechCache(userDefaults: MockUserDefaults())
         let phonemesCache = MockPhonemesCache()
+        phonemesCache.set(samplePhonemes)  // Pre-populate the mock cache with sample phonemes
         let selectedLanguageCache = MockSelectedLanguageCache()
         let audioManager = MockAudioManager()
         
@@ -59,6 +74,7 @@ struct PhonemesView_Previews: PreviewProvider {
             phonemesCache: phonemesCache,
             audioManager: audioManager)
         
-        return PhonemesView(viewModel: vm, phonemes: .constant(samplePhonemes))
+        return PhonemesView(viewModel: vm)
     }
 }
+

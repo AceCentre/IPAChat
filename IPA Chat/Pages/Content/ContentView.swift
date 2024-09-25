@@ -7,6 +7,7 @@ struct ContentView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Au
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State var isEditMode: Bool = false
     @State var currentPhonemes: [Phoneme] = PhonemesDB.english_GB.get
+    @State private var observablePhonemes: [ObservablePhoneme] = []
     @State private var ipaDictionary: [String: String] = [:]
     @State private var searchResult: String?
     @State private var showingSearchSheet = false
@@ -21,10 +22,12 @@ struct ContentView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Au
                         LazyVGrid(columns: geometry.size.width > geometry.size.height ?
                                   Array(repeating: GridItem(.flexible()), count: 7) :
                                     Array(repeating: GridItem(.flexible()), count: 4), spacing: 10) {
-                            ForEach(viewModel.phonemes) { phoneme in
+                            ForEach(observablePhonemes) { observablePhoneme in
                                 ContentPhonemeButtonView(
-                                    viewModel: viewModel, audioManager: audioManager,
-                                    phoneme: phoneme)
+                                    viewModel: viewModel,
+                                    audioManager: audioManager,
+                                    observablePhoneme: observablePhoneme
+                                )
                             }
                         }
                     }
@@ -40,9 +43,9 @@ struct ContentView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Au
                     
                     //IPA Search
                     HStack {
-                            Text(viewModel.ipaTitle ?? "")
-                            Text(viewModel.ipaResult ?? "")
-                                .bold()
+                        Text(viewModel.ipaTitle ?? "")
+                        Text(viewModel.ipaResult ?? "")
+                            .bold()
                     }
                     
                     // Buttons for Speak, Clear, Babble Mode, and Settings
@@ -50,9 +53,13 @@ struct ContentView<ViewModel, Audio>: View where ViewModel: ContentViewModel, Au
                         viewModel: viewModel, audioManager: audioManager,
                         showingSearchSheet: $showingSearchSheet)
                 }
-                .onAppear(perform: {
+                .onAppear {
+                    // Trigger any actions needed when the view appears
                     viewModel.viewDidAppear()
-                })
+                    
+                    // Convert Phoneme objects to ObservablePhoneme
+                    observablePhonemes = viewModel.phonemes.map { ObservablePhoneme(phoneme: $0) }
+                }
                 .sheet(isPresented: $showingSearchSheet) {
                     ContentSearchView(
                         viewModel: viewModel,
