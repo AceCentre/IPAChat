@@ -40,8 +40,8 @@ class AudioManager: ObservableObject {
         }
         
         let tableName = selectedLanguage == "French" ? "fr_FR" : "en_UK"
-        let ipa = Expression<String>("ipa")
-        let string = Expression<String>("string")
+        let ipa = Expression<String>(value: "ipa")
+        let string = Expression<String>(value: "string")
         let table = Table(tableName)
         
         do {
